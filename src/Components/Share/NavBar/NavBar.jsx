@@ -4,9 +4,13 @@ import logo from '../../../assets/logo.png'
 import Container from '../../Container/Container';
 import './NavBar.css'
 import useAuth from '../../../hooks/useAuth';
+import { GiHamburgerMenu } from "react-icons/gi";
+import { useState } from 'react';
+
 const NavBar = () => {
 	const { user, logOut } = useAuth();
-	
+	const [isOpen, setIsOpen] = useState(false);
+
 	const handelLogOut = () => {
 		logOut()
 			.then(() => {
@@ -32,13 +36,15 @@ const NavBar = () => {
 					<Link className='nav-items'>
 						<li>Dashboard</li>
 					</Link>
-					<div className='w-[40px] h-[40px] rounded-full overflow-hidden'>
-						<img
-							src={user?.photoURL}
-							alt=''
-							title={user?.displayName}
-						/>
-					</div>
+					<li className='px-[30px] md:px-0'>
+						<div className='w-[40px] h-[40px] rounded-full overflow-hidden'>
+							<img
+								src={user?.photoURL}
+								alt=''
+								title={user?.displayName}
+							/>
+						</div>
+					</li>
 					<div
 						onClick={handelLogOut}
 						className='nav-items cursor-pointer'
@@ -48,7 +54,10 @@ const NavBar = () => {
 				</>
 			)}
 			{!user && (
-				<Link to={'/login'} className='nav-items'>
+				<Link
+					to={"/login"}
+					className='nav-items'
+				>
 					<li>Login</li>
 				</Link>
 			)}
@@ -58,7 +67,7 @@ const NavBar = () => {
     return (
 		<div className='bg-[#FFFFFF]'>
 			<Container>
-				<div className='flex items-center justify-between'>
+				<div className='flex items-center justify-between relative'>
 					<Link to={"/"}>
 						<div className='w-[50px]'>
 							<img
@@ -68,9 +77,21 @@ const NavBar = () => {
 						</div>
 					</Link>
 
-					<div>
+					<div className='hidden md:block'>
 						<ul className='flex items-center'>{navItesm}</ul>
 					</div>
+
+					<div className='md:hidden'>
+						<GiHamburgerMenu
+							onClick={() => setIsOpen(!isOpen)}
+							size={"24"}
+						/>
+					</div>
+					{isOpen && (
+						<div className='bg-black  absolute right-0 top-10 z-50 text-primary-color rounded-md w-1/2 overflow-hidden'>
+							<ul className='flex flex-col '>{navItesm}</ul>
+						</div>
+					)}
 				</div>
 			</Container>
 		</div>

@@ -1,6 +1,6 @@
 const Container = ({children}) => {
     return (
-        <div className="md:px-[100px] py-2 h-full">
+        <div className="px-[10px] md:px-[100px] py-2 h-full">
             {children}
         </div>
     );

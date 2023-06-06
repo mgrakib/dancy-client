@@ -8,7 +8,7 @@ import danch4 from '../../assets/danch/danch4.jpg'
 import danch5 from '../../assets/danch/danch5.jpg'
 const DanceGallery = () => {
     return (
-		<div className='pt-16'>
+		<div className='mt-4 md:pt-16'>
 			<div className='grid grid-cols-1  md:grid-cols-4 grid-rows-4'>
 				<div className='gallery-div md:col-span-2 md:row-span-2'>
 					<img
