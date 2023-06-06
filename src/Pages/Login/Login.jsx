@@ -5,6 +5,8 @@ import SocialLogin from "../../Components/SocialLogin/SocialLogin";
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
 import { useState } from "react";
+import { toast } from "react-hot-toast";
+import Swal from "sweetalert2";
 
 
 const Login = () => {
@@ -19,7 +21,15 @@ const Login = () => {
 	const onSubmit = data => {
 		setError('');
 		userLogin(data.email, data.password).then(() => {
-			
+
+			// TODO: navigate home 
+			Swal.fire({
+				position: "top-end",
+				icon: "success",
+				title: "Successfully Login",
+				showConfirmButton: false,
+				timer: 1500,
+			});
 		}).catch((err) => {
 			setError(err.message)
 		});
