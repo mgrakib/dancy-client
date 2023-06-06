@@ -12,13 +12,10 @@ const HeroImage = () => {
 			<Container>
 				<div className='flex flex-col justify-end h-full  '>
 					<div>
+						
 						<div>
-							<h2 className='text-primary-color md:font-bold'>
-								lose yourself to
-							</h2>
-						</div>
-						<div>
-							<h2 className='text-primary-color  text-[100px] md:text-[167px] md:font-bold leading-[150px]'>
+							<h2 className='text-primary-color  text-[100px] md:text-[167px] md:font-bold leading-[150px]  relative dance-text inline-block'>
+
 								Dance!
 							</h2>
 						</div>

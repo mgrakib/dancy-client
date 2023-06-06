@@ -4,3 +4,11 @@
     background-position: center;
     background-repeat: no-repeat;
 }
+
+.dance-text::before{
+    content: "lose yourself to";
+    font-size: 36px;
+    position: absolute;
+    top: -50px;
+    right: 50px;
+}

@@ -1,10 +1,12 @@
 
+import DanceGallery from "../../Components/DanceGallery/DanceGallery";
 import HeroImage from "../../Components/HeroImage/HeroImage";
 
 const Home = () => {
     return (
 		<div>
-            <HeroImage />
+			<HeroImage />
+			<DanceGallery />
 		</div>
 	);
 };

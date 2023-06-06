@@ -1,0 +1,15 @@
+
+.galary-div{
+    overflow: hidden;
+}
+
+ img {
+    object-fit: cover;
+    height: 100%;
+    object-position: center;
+    transition: all .3s;
+}
+
+img:hover{
+    scale: 110%;
+}
