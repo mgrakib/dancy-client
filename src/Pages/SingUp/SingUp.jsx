@@ -9,6 +9,7 @@ import axios from "axios";
 import useAuth from "../../hooks/useAuth";
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
 	const { createUser, updateUserNamePhoto, user } = useAuth();
@@ -24,7 +25,7 @@ const SignUp = () => {
 		setError(``);
 		const formData = new FormData();
 		formData.append("image", data.image[0]);
-		console.log(data.image[0]);
+		
 
 		// password did not mathc 
 		if (data.password !== data.confirmPassword) {
@@ -40,12 +41,28 @@ const SignUp = () => {
 			)
 			.then(res => {
 				const imgURL = res?.data?.data?.display_url;
-				console.log(imgURL);
+				
 				if (res.data.success) {
 					createUser(data.email, data.password)
 						.then(() => {
 							updateUserNamePhoto(data.name, imgURL)
-								.then(() => {})
+								.then(async () => {
+									await axios
+										.post(
+											`http://localhost:5000/users`,
+											{email: data.email}
+										)
+										.then(res => {
+											// TODO: navigate home
+											Swal.fire({
+												position: "top-end",
+												icon: "success",
+												title: "Successfully SingUp",
+												showConfirmButton: false,
+												timer: 1500,
+											});
+										});
+								})
 								.catch(err => setError(err.message));
 						})
 						.catch(err => setError(err.message));
@@ -54,7 +71,7 @@ const SignUp = () => {
 	};
 
 
-	console.log(user);
+	
 	return (
 		<>
 			{/* TODO:HELMATE***** */}
