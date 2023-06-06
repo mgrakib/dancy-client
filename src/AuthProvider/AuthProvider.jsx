@@ -51,30 +51,30 @@ const AuthProvider = ({ children }) => {
 	};
 
 	const logOut = () => {
-		signOut(auth);
+		signOut(auth)
 	};
 
 	// onAuthStateChanged
 	useEffect(() => {
 		const unsubscribe = onAuthStateChanged(auth, currentUser => {
 			setUser(currentUser);
-
-			if (currentUser) {
-				const loogedUser = { email: currentUser.email };
-
-				axios
-					.post(`http://localhost:5000/jwt`, loogedUser)
-					.then(
-						res =>
-							localStorage.setItem(
-								"access-token",
-								res.data.token
-							),
-						setLoading(false)
-					);
-			} else {
-				localStorage.removeItem("access-token");
-			}
+setLoading(false);
+			// if (currentUser) {
+			// 	const loogedUser = { email: currentUser.email };
+			// setLoading(false);
+			// 	axios
+			// 		.post(`http://localhost:5000/jwt`, loogedUser)
+			// 		.then(
+			// 			res =>
+			// 				localStorage.setItem(
+			// 					"access-token",
+			// 					res.data.token
+			// 				),
+						
+			// 		);
+			// } else {
+			// 	localStorage.removeItem("access-token");
+			// }
 		});
 
 		return () => unsubscribe();

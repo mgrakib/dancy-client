@@ -10,22 +10,22 @@ import SignUp from "../Pages/SingUp/SingUp";
 const router = createBrowserRouter([
 	{
 		path: "/",
-        element: <Main />,
-        errorElement: <ErrorPage />,
-        children: [
-            {
-                path: '/',
-                element: <Home />
-            },
-            {
-                path: '/login',
-                element: <Login />
-            },
-            {
-                path: '/singup',
-                element: <SignUp />
-            },
-        ]
+		element: <Main />,
+		errorElement: <ErrorPage />,
+		children: [
+			{
+				path: "/",
+				element: <Home />,
+			},
+			{
+				path: "/login",
+				element: <Login />,
+			},
+			{
+				path: "/signup",
+				element: <SignUp />,
+			},
+		],
 	},
 ]);
 
