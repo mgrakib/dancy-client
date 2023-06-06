@@ -1,0 +1,6 @@
+.heroImg-container {
+    background-image: url('../../assets//banner/home-1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}

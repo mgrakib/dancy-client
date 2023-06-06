@@ -1,9 +1,12 @@
+
+import HeroImage from "../../Components/HeroImage/HeroImage";
+
 const Home = () => {
     return (
-        <div>
-            this is home
-        </div>
-    );
+		<div>
+            <HeroImage />
+		</div>
+	);
 };
 
 export default Home;
