@@ -1,15 +1,34 @@
 
-.galary-div{
+.gallery-div{
     overflow: hidden;
+    position: relative;
+    cursor: pointer;
+}
+
+.gallery-overlay{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    top: 100%;
+    left: 0;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all .6s;
+}
+
+.gallery-div:hover .gallery-overlay{
+    top: 0;
+    opacity: 1;
 }
 
  img {
     object-fit: cover;
     height: 100%;
     object-position: center;
-    transition: all .3s;
+    
 }
 
-img:hover{
-    scale: 110%;
-}
