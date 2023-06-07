@@ -5,7 +5,15 @@ import logo_light from "../../assets/logo.png";
 import { IoHome } from "react-icons/io5";
 import { FaUsers } from "react-icons/fa";
 import { HiOutlineClipboardDocumentList } from "react-icons/hi2";
+import useRole from "../../hooks/useRole";
 const Dashboard = () => {
+    const { role, isLoading } = useRole();
+    
+    if (isLoading) {
+        return <div className="w-full h-[100vh] flex items-center justify-center bg-red-200">Loading</div>
+    }
+
+    console.log(role)
 	return (
 		<div className='flex'>
 			<div className='w-[20%] bg-dashboard-color h-[100vh]'>
