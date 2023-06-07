@@ -1,6 +1,6 @@
 import './DanceGallery.css'
 
-import Container from "../Container/Container";
+
 import danch1 from '../../assets/danch/danch1.jpg'
 import danch2 from '../../assets/danch/danch2.avif'
 import danch3 from '../../assets/danch/danch3.jpg'

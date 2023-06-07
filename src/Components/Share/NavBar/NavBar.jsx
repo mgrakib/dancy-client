@@ -74,7 +74,7 @@ const NavBar = () => {
 			data-aos-duration='10000'
 			data-aos-easing='linear'
 		>
-			<div className='bg-[#FFFFFF]'>
+			<div className='bg-[#FFFFFF] shadow-lg'>
 				<Container>
 					<div className='flex items-center justify-between relative'>
 						<Link to={"/"}>
@@ -97,7 +97,7 @@ const NavBar = () => {
 							/>
 						</div>
 						{isOpen && (
-							<div className=' absolute right-0 top-10 text-primary-color rounded-md w-1/2 overflow-hidden responisv-nav'>
+							<div className=' absolute right-0 top-10 text-primary-color rounded-md w-1/2 overflow-hidden responisv-nav z-50'>
 								<ul className='flex flex-col '>{navItesm}</ul>
 							</div>
 						)}
