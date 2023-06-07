@@ -9,6 +9,7 @@ export default {
 				"common-color": "var( --common-color)",
 				"gray-color": "var(  --gray-color)",
 				"action-color": "var(--action-color)",
+				"dashboard-color": "var(--dashboard-color)",
 			},
 		},
 	},

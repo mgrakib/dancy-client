@@ -37,7 +37,7 @@ const NavBar = () => {
 			</Link>
 			{user && (
 				<>
-					<Link className='nav-items'>
+					<Link to={'/dashboard'} className='nav-items'>
 						<li>Dashboard</li>
 					</Link>
 					<li className='px-[30px] md:px-0'>
