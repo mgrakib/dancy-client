@@ -1,0 +1,6 @@
+.class-container:hover .classTitle{
+    color: var(--secondary-color);
+    left: 0;
+    /* background-color: red; */
+}
+

@@ -23,10 +23,10 @@ const DanceGallery = () => {
 				<div className='mt-4 md:py-16'>
 					<SectionTitle
 						isCenter={true}
-						title={"CHOOSE YOUR DANCE STYLE"}
+						title={"Show Your Talent"}
 						subTitle={"OUR POPULAR CLASS"}
 						details={
-							"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+							"It's Time to show your tallent to all the people of the World"
 						}
 					/>
 				</div>
