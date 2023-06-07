@@ -7,7 +7,7 @@ import { FaUsers } from "react-icons/fa";
 import { HiOutlineClipboardDocumentList } from "react-icons/hi2";
 const Dashboard = () => {
 	return (
-		<div className='flex gap-4'>
+		<div className='flex'>
 			<div className='w-[20%] bg-dashboard-color  h-[100vh]'>
 				<div className=' p-4  border-b border-dashed border-secondary-color mb-4'>
 					<Link to={"/"}>

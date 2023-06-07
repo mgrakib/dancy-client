@@ -5,15 +5,10 @@ import SectionTitle from "../SectionTitle/SectionTitle";
 import './PopularClass.css'
 import axios from "axios";
 import Card from "../Card/Card";
+import useClass from "../../hooks/useClass";
 const PopularClass = () => {
-	const {data: classes =[], refetch, isLoading } = useQuery({
-		queryKey: ['classes'],
-		queryFn: async () => {
-			const result = await axios("http://localhost:5000/classes");
-			return result.data
-		}
-	})
-
+	
+	const {classes} = useClass()
 	
     return (
 		<div className=''>

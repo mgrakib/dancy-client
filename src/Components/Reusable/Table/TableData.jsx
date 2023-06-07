@@ -1,7 +1,7 @@
 
-const TableData = ({ users:data }) => {
+const TableData = ({ users: data, handelRoleChange }) => {
 	
-	console.log(data)
+
 	return (
 		<div>
 			<div className='overflow-x-auto'>
@@ -26,17 +26,36 @@ const TableData = ({ users:data }) => {
 								<td className=' flex items-center justify-center gap-2'>
 									{!item.role ? (
 										<>
-											<button className='bg-green-200 px-3 py-1 rounded-md'>
+											<button
+												onClick={() =>
+													handelRoleChange("admin", item)
+												}
+												className='bg-green-200 px-3 py-1 rounded-md'
+											>
 												Admin
 											</button>
-											<button className='bg-rose-200 px-3 py-1 rounded-md'>
+											<button
+												onClick={() =>
+													handelRoleChange(
+														"instractor", item
+													)
+												}
+												className='bg-rose-200 px-3 py-1 rounded-md'
+											>
 												Instractor
 											</button>
 										</>
 									) : (
 										<>
 											{item.role === "instractor" ? (
-												<button className='bg-green-200 px-3 py-1 rounded-md'>
+												<button
+													onClick={() =>
+														handelRoleChange(
+															"admin", item
+														)
+													}
+													className='bg-green-200 px-3 py-1 rounded-md'
+												>
 													Admin
 												</button>
 											) : (
