@@ -1,12 +1,13 @@
 /** @format */
 
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import logo_light from "../../assets/logo.png";
 import { IoHome } from "react-icons/io5";
 import { FaUsers } from "react-icons/fa";
+import { HiOutlineClipboardDocumentList } from "react-icons/hi2";
 const Dashboard = () => {
 	return (
-		<div>
+		<div className='flex gap-4'>
 			<div className='w-[20%] bg-dashboard-color  h-[100vh]'>
 				<div className=' p-4  border-b border-dashed border-secondary-color mb-4'>
 					<Link to={"/"}>
@@ -19,22 +20,26 @@ const Dashboard = () => {
 				</div>
 
 				<ul>
-					<Link>
+					<Link to='/dashboard'>
 						<li className='text-gray-color  p-4 flex items-center gap-2 text-lg'>
 							<IoHome /> Admin Home
 						</li>
 					</Link>
-					<Link>
+					<Link to='/dashboard/manage-users'>
 						<li className='text-gray-color  p-4 flex items-center gap-2 text-lg'>
 							<FaUsers /> Manage Users
 						</li>
 					</Link>
-					<Link>
+					<Link to='/dashboard/manage-classes'>
 						<li className='text-gray-color  p-4 flex items-center gap-2 text-lg'>
-							<FaUsers /> Manage Users
+							<HiOutlineClipboardDocumentList /> Manage Classes
 						</li>
 					</Link>
 				</ul>
+			</div>
+
+			<div className="w-full">
+				<Outlet />
 			</div>
 		</div>
 	);

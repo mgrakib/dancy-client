@@ -7,6 +7,9 @@ import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SingUp/SingUp";
 import Dashboard from "../Layout/Dashboard/Dashboard";
+import AdminHome from "../Pages/AdminDashBoardPages/AdminHome/AdminHome";
+import ManageUsers from "../Pages/AdminDashBoardPages/ManageUsers/ManageUsers";
+import ManageClasses from "../Pages/AdminDashBoardPages/ManageClasses/ManageClasses";
 
 const router = createBrowserRouter([
 	{
@@ -29,10 +32,23 @@ const router = createBrowserRouter([
 		],
 	},
 	{
-		path: '/dashboard',
+		path: "/dashboard",
 		element: <Dashboard />,
-		// children: 
-	}
+		children: [
+			{
+				path: "/dashboard",
+				element: <AdminHome />,
+			},
+			{
+				path: "/dashboard/manage-users",
+				element: <ManageUsers />,
+			},
+			{
+				path: "/dashboard/manage-classes",
+				element: <ManageClasses />,
+			},
+		],
+	},
 ]);
 
 

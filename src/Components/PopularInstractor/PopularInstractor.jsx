@@ -15,8 +15,6 @@ const PopularInstractor = () => {
         }
     })
 
-
-    console.log(instractors)
     return (
 		<div>
 			<Container>
