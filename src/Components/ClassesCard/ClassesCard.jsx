@@ -3,10 +3,34 @@ import { BiUser } from "react-icons/bi";
 import { GrMail } from "react-icons/gr";
 import { MdEventAvailable } from "react-icons/md";
 import { ImPriceTags } from "react-icons/im";
-const ClassesCard = ({ singleClass }) => {
-    console.log(singleClass)
-    return (
-		<div className='rounded-tl-lg rounded-tr-lg overflow-hidden  border border-secondary-color'>
+import Button from '../Button/Button';
+import { useState } from 'react';
+import DenyModal from '../Modal/DenyModal';
+import axios from 'axios';
+
+const ClassesCard = ({ singleClass, openModal, refetch }) => {
+	let [isOpen, setIsOpen] = useState(false);
+	function closeModal() {
+		setIsOpen(false);
+	}
+
+	function openModal() {
+		setIsOpen(true);
+	}
+
+	// change status
+	const handelChangeStatus = async (statusValue, id, feedBack) => {
+		const status = { status: statusValue, id: id, feedBack };
+		const result = await axios
+			.put(`http://localhost:5000/update-class-status`, status)
+			.then(res => {
+				refetch();
+				console.log(res.data)
+			});
+	};
+
+	return (
+		<div className='rounded-tl-lg rounded-tr-lg overflow-hidden  border border-secondary-color card-container duration-500'>
 			<div className='h-[250px]  overflow-hidden'>
 				<img
 					src={singleClass?.img}
@@ -43,10 +67,50 @@ const ClassesCard = ({ singleClass }) => {
 					</p>
 
 					<p className='flex items-center gap-2'>
-						<ImPriceTags /> Cours Fee: {singleClass?.price || '00'}
+						<ImPriceTags /> Cours Fee: {singleClass?.price || "00"}
 					</p>
 				</div>
+
+				<div>
+					<p className='pb-4'>
+						Status :{" "}
+						<span
+							className={`${
+								singleClass.status === "pending"
+									? "text-yellow-500"
+									: singleClass.status === "approved"
+									? "text-green-500"
+									: "text-red-500"
+							}`}
+						>
+							{singleClass?.status}
+						</span>
+					</p>
+				</div>
+				<div className='flex items-center gap-4'>
+					<div
+						onClick={() =>
+							handelChangeStatus("approved", singleClass._id)
+						}
+					>
+						<Button label={"Approve"} />
+					</div>
+
+					<div
+						onClick={openModal}
+						className=''
+					>
+						<Button label={"Deny"} />
+					</div>
+				</div>
 			</div>
+
+			<DenyModal
+				closeModal={closeModal}
+				isOpen={isOpen}
+				id={singleClass._id}
+				handelChangeStatus={handelChangeStatus}
+			/>
 		</div>
 	);
 };

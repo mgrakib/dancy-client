@@ -24,6 +24,7 @@ const TableData = ({ users: data, handelRoleChange }) => {
 								<td>{item?.email}</td>
 								<td>{item?.role || "Student"}</td>
 								<td className=' flex items-center justify-center gap-2'>
+									{/* TODO: disable btn not invisibal */}
 									{!item.role ? (
 										<>
 											<button

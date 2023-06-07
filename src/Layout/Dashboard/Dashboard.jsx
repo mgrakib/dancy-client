@@ -8,7 +8,7 @@ import { HiOutlineClipboardDocumentList } from "react-icons/hi2";
 const Dashboard = () => {
 	return (
 		<div className='flex'>
-			<div className='w-[20%] bg-dashboard-color  h-[100vh]'>
+			<div className='w-[20%] bg-dashboard-color h-[100vh]'>
 				<div className=' p-4  border-b border-dashed border-secondary-color mb-4'>
 					<Link to={"/"}>
 						<img
@@ -38,7 +38,7 @@ const Dashboard = () => {
 				</ul>
 			</div>
 
-			<div className="w-full">
+			<div className="w-full h-[100vh] overflow-y-auto ">
 				<Outlet />
 			</div>
 		</div>

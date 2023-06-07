@@ -6,7 +6,7 @@ import useClass from "../../../hooks/useClass";
 const ManageClasses = () => {
     const { classes, isLoading, refetch } = useClass();
     
-    console.log(isLoading, classes);
+    
     if (isLoading) {
         return <p>Loading...</p>
     }
@@ -24,6 +24,7 @@ const ManageClasses = () => {
 						<ClassesCard
 							key={singleClass?._id}
 							singleClass={singleClass}
+							refetch={refetch}
 						/>
 					))}
 				</div>
