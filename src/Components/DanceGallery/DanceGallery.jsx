@@ -24,7 +24,7 @@ const DanceGallery = () => {
 					<SectionTitle
 						isCenter={true}
 						title={"Show Your Talent"}
-						subTitle={"OUR POPULAR CLASS"}
+						subTitle={"Dance Gallery"}
 						details={
 							"It's Time to show your tallent to all the people of the World"
 						}

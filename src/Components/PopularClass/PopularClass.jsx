@@ -14,7 +14,7 @@ const PopularClass = () => {
 		}
 	})
 
-	console.log(classes);
+	
     return (
 		<div className=''>
 			<Container>
@@ -26,7 +26,7 @@ const PopularClass = () => {
 					/>
 				</div>
 
-				<div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
+				<div className='flex items-center justify-center'>
 					{classes.map(singleClass => (
 						<Card key={singleClass._id} />
 					))}
