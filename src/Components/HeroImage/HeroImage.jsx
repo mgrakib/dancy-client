@@ -4,7 +4,10 @@ import heroImg from "../../assets/banner/home-1.jpg";
 import Container from "../Container/Container";
 import "./HeroImage.css";
 import { GrContact, GrLocation } from "react-icons/gr";
-
+import AOS from "aos";
+import "aos/dist/aos.css"; // You can also use <link> for styles
+// ..
+AOS.init();
 
 const HeroImage = () => {
 	return (
@@ -12,12 +15,18 @@ const HeroImage = () => {
 			<Container>
 				<div className='flex flex-col justify-end h-full  '>
 					<div>
-						
-						<div>
-							<h2 className='text-primary-color  text-[100px] md:text-[167px] md:font-bold leading-[150px]  relative dance-text inline-block'>
-
-								Dance!
-							</h2>
+						<div
+							data-aos='fade-right'
+							data-aos-duration='10000'
+							data-aos-easing='linear'
+							
+						>
+							{/* TODO:Z-index problem, with mobile nav  */}
+							<div className="">
+								<h2 className='text-primary-color  text-[100px] md:text-[167px] md:font-bold leading-[150px]  relative dance-text inline-block z-10'>
+									Dance!
+								</h2>
+							</div>
 						</div>
 					</div>
 
@@ -25,9 +34,15 @@ const HeroImage = () => {
 						<div className=' flex flex-col md:flex-row relative'>
 							<div className='flex  items-end flex-1 flex-wrap'>
 								<div className='bg-action-color w-full text-primary-color px-[30px] py-[35px]'>
-									<h2 className='text-[26px]'>
-										Hello new Students
-									</h2>
+									<div
+										data-aos='fade-left'
+										data-aos-duration='4000'
+									>
+										<h2 className='text-[26px]'>
+											Hello new Students
+										</h2>
+									</div>
+
 									<p className='text-[18px]'>
 										Sign up now for a taster lesson -
 										completely free!
@@ -35,7 +50,6 @@ const HeroImage = () => {
 								</div>
 							</div>
 
-							
 							<div className='flex  bg-primary-color flex-1 items-end flex-wrap'>
 								<div className='text-primary-color px-[30px] py-[35px]'>
 									<p className='text-secondary-color'>

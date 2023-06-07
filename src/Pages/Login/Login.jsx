@@ -91,6 +91,7 @@ const Login = () => {
 									Password
 								</label>
 							</div>
+							{/* TODO show password  */}
 							<input
 								type='password'
 								id='password'

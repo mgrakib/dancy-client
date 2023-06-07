@@ -1,11 +1,15 @@
 
 import { Link } from 'react-router-dom';
-import logo from '../../../assets/logo.png' 
+import logo_dark from "../../../assets/logo_Dark.png"; 
 import Container from '../../Container/Container';
 import './NavBar.css'
 import useAuth from '../../../hooks/useAuth';
 import { GiHamburgerMenu } from "react-icons/gi";
 import { useState } from 'react';
+import AOS from "aos";
+import "aos/dist/aos.css"; // You can also use <link> for styles
+// ..
+AOS.init();
 
 const NavBar = () => {
 	const { user, logOut } = useAuth();
@@ -64,36 +68,42 @@ const NavBar = () => {
 		</>
 	);
 
-    return (
-		<div className='bg-[#FFFFFF]'>
-			<Container>
-				<div className='flex items-center justify-between relative'>
-					<Link to={"/"}>
-						<div className='w-[50px]'>
-							<img
-								src={logo}
-								alt=''
+	return (
+		<div
+			data-aos='fade-up'
+			data-aos-duration='10000'
+			data-aos-easing='linear'
+		>
+			<div className='bg-[#FFFFFF]'>
+				<Container>
+					<div className='flex items-center justify-between relative'>
+						<Link to={"/"}>
+							<div className='w-[70px]'>
+								<img
+									src={logo_dark}
+									alt=''
+								/>
+							</div>
+						</Link>
+
+						<div className='hidden md:block'>
+							<ul className='flex items-center'>{navItesm}</ul>
+						</div>
+
+						<div className='md:hidden'>
+							<GiHamburgerMenu
+								onClick={() => setIsOpen(!isOpen)}
+								size={"24"}
 							/>
 						</div>
-					</Link>
-
-					<div className='hidden md:block'>
-						<ul className='flex items-center'>{navItesm}</ul>
+						{isOpen && (
+							<div className=' absolute right-0 top-10 text-primary-color rounded-md w-1/2 overflow-hidden responisv-nav'>
+								<ul className='flex flex-col '>{navItesm}</ul>
+							</div>
+						)}
 					</div>
-
-					<div className='md:hidden'>
-						<GiHamburgerMenu
-							onClick={() => setIsOpen(!isOpen)}
-							size={"24"}
-						/>
-					</div>
-					{isOpen && (
-						<div className='bg-black  absolute right-0 top-10 z-50 text-primary-color rounded-md w-1/2 overflow-hidden'>
-							<ul className='flex flex-col '>{navItesm}</ul>
-						</div>
-					)}
-				</div>
-			</Container>
+				</Container>
+			</div>
 		</div>
 	);
 };
