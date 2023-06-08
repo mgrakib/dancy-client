@@ -11,10 +11,12 @@ import useRole from "../../hooks/useRole";
 import { useQuery } from "react-query";
 import { useEffect } from "react";
 import { MdPayment } from "react-icons/md";
+import useCartClass from "../../hooks/useCartClass";
 
 const Dashboard = () => {
     
 	const { role, isLoading, refetch } = useRole();
+	const {cartClasses } = useCartClass();
 	
 	// set dashboard nav link by role 
     let sideNavItem;
@@ -23,17 +25,17 @@ const Dashboard = () => {
         sideNavItem = (
 			<>
 				<Link to='/dashboard'>
-					<li className='text-gray-color  p-4 flex items-center gap-2 text-lg'>
+					<li className='text-gray-color  p-4 flex items-center gap-2  '>
 						<IoHome /> Admin Home
 					</li>
 				</Link>
 				<Link to='/dashboard/manage-users'>
-					<li className='text-gray-color  p-4 flex items-center gap-2 text-lg'>
+					<li className='text-gray-color  p-4 flex items-center gap-2 '>
 						<FaUsers /> Manage Users
 					</li>
 				</Link>
 				<Link to='/dashboard/manage-classes'>
-					<li className='text-gray-color  p-4 flex items-center gap-2 text-lg'>
+					<li className='text-gray-color  p-4 flex items-center gap-2 '>
 						<HiOutlineClipboardDocumentList /> Manage Classes
 					</li>
 				</Link>
@@ -43,17 +45,17 @@ const Dashboard = () => {
 		sideNavItem = (
 			<>
 				<Link to='/dashboard'>
-					<li className='text-gray-color  p-4 flex items-center gap-2 text-lg'>
+					<li className='text-gray-color  p-4 flex items-center gap-2 '>
 						<IoHome /> Instractor Home
 					</li>
 				</Link>
 				<Link to='/dashboard/my-classes'>
-					<li className='text-gray-color  p-4 flex items-center gap-2 text-lg'>
+					<li className='text-gray-color  p-4 flex items-center gap-2 '>
 						<FaUsers /> My Classes
 					</li>
 				</Link>
 				<Link to='/dashboard/add-an-class'>
-					<li className='text-gray-color  p-4 flex items-center gap-2 text-lg'>
+					<li className='text-gray-color  p-4 flex items-center gap-2 '>
 						<HiOutlineClipboardDocumentList /> Add a Class
 					</li>
 				</Link>
@@ -63,27 +65,33 @@ const Dashboard = () => {
         sideNavItem = (
 			<>
 				<Link to='/dashboard'>
-					<li className='text-gray-color  p-4 flex items-center gap-2 text-lg'>
+					<li className='text-gray-color  p-4 flex items-center gap-2 '>
 						<IoHome /> Student Home
 					</li>
 				</Link>
 				<Link to='/dashboard/my-selected-classes'>
-					<li className='text-gray-color  p-4 flex items-center gap-2 text-lg'>
-						<FaBookOpen /> My Selected Classes
+					<li className='text-gray-color  p-4 flex items-center gap-2 relative'>
+						<FaBookOpen />
+						<div className="relative">
+							My Selected Classes
+							<span className='bg-cyan-500 text-white w-[15px] h-[15px] text-[10px] flex items-center justify-center absolute -right-4 -top-1 rounded-full'>
+								{cartClasses.length}
+							</span>
+						</div>
 					</li>
 				</Link>
 				<Link to='/dashboard/my-enrolled-classes'>
-					<li className='text-gray-color  p-4 flex items-center gap-2 text-lg'>
+					<li className='text-gray-color  p-4 flex items-center gap-2 '>
 						<SiGoogleclassroom /> My Enrolled Classes
 					</li>
 				</Link>
 				<Link to='/dashboard/payment'>
-					<li className='text-gray-color  p-4 flex items-center gap-2 text-lg'>
+					<li className='text-gray-color  p-4 flex items-center gap-2 '>
 						<MdPayment /> Payment
 					</li>
 				</Link>
 				<Link to='/dashboard/payment-history'>
-					<li className='text-gray-color  p-4 flex items-center gap-2 text-lg'>
+					<li className='text-gray-color  p-4 flex items-center gap-2 '>
 						<FaHistory /> Payment Histroy
 					</li>
 				</Link>
@@ -92,7 +100,7 @@ const Dashboard = () => {
     }
 		return (
 			<div className='flex'>
-				<div className='w-[20%] bg-dashboard-color h-[100vh]'>
+				<div className='w-[25%] bg-dashboard-color h-[100vh]'>
 					<div className=' p-4  border-b border-dashed border-secondary-color mb-4'>
 						<Link to={"/"}>
 							<img
@@ -103,7 +111,7 @@ const Dashboard = () => {
 						</Link>
 					</div>
 
-					<ul>{sideNavItem}</ul>
+					<ul >{sideNavItem}</ul>
 				</div>
 
 				<div className='w-full h-[100vh] overflow-y-auto '>
