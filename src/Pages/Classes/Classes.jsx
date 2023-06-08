@@ -46,10 +46,20 @@ const Classes = () => {
 				instructorName,
 				instructorEmail,
 				availableSeats,
-				price
-            } = singleClass;
+				price,
+				img,
+			} = singleClass;
             
-            const classToCart = { classId: _id, name, instructorEmail, instructorName, availableSeats,price, studentEmail: user?.email }
+            const classToCart = {
+				classId: _id,
+				name,
+				instructorEmail,
+				instructorName,
+				availableSeats,
+				price,
+				studentEmail: user?.email,
+				img,
+			};
             
             axios
 				.post(`http://localhost:5000/class-add-to-cart`, classToCart)

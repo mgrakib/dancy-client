@@ -18,6 +18,8 @@ const ClassesCard = ({
 	isInstructor,
 	isUser,
 	handerAddClass,
+	isCart,
+	handelRemoveToCart,
 }) => {
 	const {
 		_id,
@@ -30,9 +32,8 @@ const ClassesCard = ({
 		status,
 	} = singleClass;
 
-	// check role for disable btn 
+	// check role for disable btn
 	const { role } = useRole();
-	
 
 	let [isOpen, setIsOpen] = useState(false);
 	function closeModal() {
@@ -169,6 +170,23 @@ const ClassesCard = ({
 						</div>
 					</div>
 				)}
+				{isCart && (
+					<div className='flex items-center gap-4'>
+						<div onClick={() => handelRemoveToCart(singleClass)}>
+							<Button
+								bgColor={"bg-secondary-color"}
+								label={"Remove To Cart"}
+								isDisable={
+									availableSeats === 0 ||
+									role === "admin" ||
+									role === "instractor"
+								}
+							/>
+						</div>
+					</div>
+				)}
+
+				{}
 			</div>
 
 			<DenyModal
