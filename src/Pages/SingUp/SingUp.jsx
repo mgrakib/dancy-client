@@ -78,6 +78,7 @@ const SignUp = () => {
 		<>
 			{/* TODO:HELMATE***** */}
 			{/* TODO: Navigate after sing up  */}
+			{/* TODO: take a extra img for show display  */}
 			{/* <Helmet>
 				<title>Hello World</title>
 				<link

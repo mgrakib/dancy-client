@@ -6,15 +6,17 @@ const Footer = () => {
     return (
 		<div>
 			<Container>
-				<Link to={'/'}>
-					<div className='w-[160px] pt-4 md:pt-16 mx-auto text-center'>
+				
+				<div className='w-[160px] pt-4 md:pt-16 mx-auto text-center'>
+					<Link to={'/'}>
 						<img
 							src={logo_dark}
 							alt=''
 						/>
 						<p>Dance school</p>
+						</Link>
 					</div>
-				</Link>
+				
 				<div className='grid grid-cols-1 md:grid-cols-4 gap-5'>
 					<div className='py-4 md:py-16 text-center'>
 						<h4 className='text-3xl font-bold'>Contacts</h4>

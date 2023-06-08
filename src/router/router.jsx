@@ -12,6 +12,11 @@ import ManageUsers from "../Pages/AdminDashBoardPages/ManageUsers/ManageUsers";
 import ManageClasses from "../Pages/AdminDashBoardPages/ManageClasses/ManageClasses";
 import AddAnClass from "../Pages/InstractorDashboardPages/AddAnClass/AddAnClass";
 import MyClasses from "../Pages/InstractorDashboardPages/MyClasses/MyClasses";
+import MySelectedClass from "../Pages/StudentDashBoardPages/MySelectedClass/MySelectedClass";
+import MyEnrolledClass from "../Pages/StudentDashBoardPages/MyEnrolledClass/MyEnrolledClass";
+import Payment from "../Pages/StudentDashBoardPages/Payment/Payment";
+import PaymentHistory from "../Pages/StudentDashBoardPages/PaymentHistory/PaymentHistory";
+import Classes from "../Pages/Classes/Classes";
 
 const router = createBrowserRouter([
 	{
@@ -22,6 +27,10 @@ const router = createBrowserRouter([
 			{
 				path: "/",
 				element: <Home />,
+			},
+			{
+				path: "/classes",
+				element: <Classes />,
 			},
 			{
 				path: "/login",
@@ -56,6 +65,22 @@ const router = createBrowserRouter([
 			{
 				path: "/dashboard/my-classes",
 				element: <MyClasses />,
+			},
+			{
+				path: "/dashboard/my-selected-classes",
+				element: <MySelectedClass />,
+			},
+			{
+				path: "/dashboard/my-enrolled-classes",
+				element: <MyEnrolledClass />,
+			},
+			{
+				path: "/dashboard/payment",
+				element: <Payment />,
+			},
+			{
+				path: "/dashboard/payment-history",
+				element: <PaymentHistory />,
 			},
 		],
 	},

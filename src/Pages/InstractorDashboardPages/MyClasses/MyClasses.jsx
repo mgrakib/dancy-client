@@ -1,12 +1,20 @@
 import ClassesCard from "../../../Components/ClassesCard/ClassesCard";
 import DashboardContainer from "../../../Components/DashboardContainer/DashboardContainer";
+import PageLoader from "../../../Components/PageLoader/PageLoader";
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
+import useAuth from "../../../hooks/useAuth";
 import useInstructorClass from "../../../hooks/useInstructorClass";
 import { GrFormAdd } from "react-icons/gr";
 
 const MyClasses = () => {
+    const {user, loading} = useAuth()
 
-    const { instructorCalsses } = useInstructorClass();
+    const { instructorCalsses, isLoading } = useInstructorClass();
+    
+    if (loading || isLoading) {
+		return <PageLoader />;
+	}
+   
 
     // console.log(instructorCalsses);
     return (

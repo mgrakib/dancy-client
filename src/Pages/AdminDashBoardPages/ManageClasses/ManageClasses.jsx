@@ -6,6 +6,7 @@ import useClass from "../../../hooks/useClass";
 const ManageClasses = () => {
     const { classes, isLoading, refetch } = useClass();
     
+	// TODO: disable btn after click approve or deny
     
     if (isLoading) {
         return <p>Loading...</p>
