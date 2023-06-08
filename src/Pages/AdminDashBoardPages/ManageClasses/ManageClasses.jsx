@@ -13,12 +13,12 @@ const ManageClasses = () => {
     return (
 		<div>
 			<DashboardContainer>
-				<div className='py-4 md:py-16'>
+				
 					<SectionTitle
 						title={"All Class"}
 						isCenter={true}
 					/>
-				</div>
+				
 				<div className='grid grid-cols-1 md:grid-cols-3 md:gap-10 gap-2 '>
 					{classes.map(singleClass => (
 						<ClassesCard

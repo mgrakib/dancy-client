@@ -23,7 +23,7 @@ const Login = () => {
 		setError('');
 		userLogin(data.email, data.password).then(() => {
 
-			console.log(data.email)
+			
 			// axios.post(`http://localhost:5000/users`, data.email).then(res => {
 			// 	// TODO: navigate home
 			// 	Swal.fire({

@@ -18,13 +18,13 @@ const PopularInstractor = () => {
     return (
 		<div>
 			<Container>
-				<div className='mt-4 md:py-16'>
+				
 					<SectionTitle
 						title={"Learn to swing your hips with them"}
 						subTitle={"OUR POPULAR Instractors"}
 						isCenter={true}
 					/>
-				</div>
+		
 
 				<div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
 					{instractors.map(instractor => (

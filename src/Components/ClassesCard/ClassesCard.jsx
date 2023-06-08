@@ -25,7 +25,7 @@ const ClassesCard = ({ singleClass, openModal, refetch }) => {
 			.put(`http://localhost:5000/update-class-status`, status)
 			.then(res => {
 				refetch();
-				console.log(res.data)
+				
 			});
 	};
 

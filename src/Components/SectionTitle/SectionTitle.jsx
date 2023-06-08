@@ -1,7 +1,11 @@
 
 const SectionTitle = ({title, subTitle, details, isCenter}) => {
     return (
-		<div className={` w-1/2 mx-auto ${isCenter && "text-center"}`}>
+		<div
+			className={`py-4 md:py-16 w-1/2 mx-auto ${
+				isCenter && "text-center"
+			}`}
+		>
 			<div
 				data-aos='fade-left'
 				data-aos-duration='1000'

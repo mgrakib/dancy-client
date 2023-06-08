@@ -20,7 +20,7 @@ const DanceGallery = () => {
 		>
 			
 			<div>
-				<div className='mt-4 md:py-16'>
+				
 					<SectionTitle
 						isCenter={true}
 						title={"Show Your Talent"}
@@ -29,7 +29,7 @@ const DanceGallery = () => {
 							"It's Time to show your tallent to all the people of the World"
 						}
 					/>
-				</div>
+				
 				<div className='grid grid-cols-1  md:grid-cols-4 grid-rows-4'>
 					<div className='gallery-div md:col-span-2 md:row-span-2'>
 						<img

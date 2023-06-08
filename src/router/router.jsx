@@ -10,6 +10,7 @@ import Dashboard from "../Layout/Dashboard/Dashboard";
 import AdminHome from "../Pages/AdminDashBoardPages/AdminHome/AdminHome";
 import ManageUsers from "../Pages/AdminDashBoardPages/ManageUsers/ManageUsers";
 import ManageClasses from "../Pages/AdminDashBoardPages/ManageClasses/ManageClasses";
+import AddAnClass from "../Pages/InstractorDashboardPages/AddAnClass/AddAnClass";
 
 const router = createBrowserRouter([
 	{
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
 			{
 				path: "/dashboard/manage-classes",
 				element: <ManageClasses />,
+			},
+			{
+				path: "/dashboard/add-an-class",
+				element: <AddAnClass />,
 			},
 		],
 	},

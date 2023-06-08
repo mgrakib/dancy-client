@@ -7,13 +7,15 @@ import { FaUsers } from "react-icons/fa";
 import { HiOutlineClipboardDocumentList } from "react-icons/hi2";
 import useRole from "../../hooks/useRole";
 import { useQuery } from "react-query";
+import { useEffect } from "react";
 
 const Dashboard = () => {
     
-    const { role, isLoading } = useRole();
+	const { role, isLoading, refetch } = useRole();
+	
+	// set dashboard nav link by role 
     let sideNavItem;
 
-    console.log(role)
     if (role === 'admin') {
         sideNavItem = (
 			<>
@@ -47,7 +49,7 @@ const Dashboard = () => {
 						<FaUsers /> My Classes
 					</li>
 				</Link>
-				<Link to='/dashboard/manage-classes'>
+				<Link to='/dashboard/add-an-class'>
 					<li className='text-gray-color  p-4 flex items-center gap-2 text-lg'>
 						<HiOutlineClipboardDocumentList /> Add a Class
 					</li>

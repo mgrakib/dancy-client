@@ -13,13 +13,13 @@ const PopularClass = () => {
     return (
 		<div className=''>
 			<Container>
-				<div className='mt-4 md:py-16'>
+				
 					<SectionTitle
 						title={"CHOOSE YOUR DANCE STYLE"}
 						subTitle={"OUR POPULAR CLASS"}
 						isCenter={true}
 					/>
-				</div>
+			
 
 				<div className='flex items-center justify-center'>
 					{classes.map(singleClass => (

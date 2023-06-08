@@ -1,7 +1,5 @@
 
 const TableData = ({ users: data, handelRoleChange }) => {
-	
-
 	return (
 		<div>
 			<div className='overflow-x-auto'>
@@ -10,7 +8,7 @@ const TableData = ({ users: data, handelRoleChange }) => {
 					<thead>
 						<tr>
 							<th>#</th>
-						
+
 							<th>Email</th>
 							<th>Role</th>
 							<th className='text-center'>Action</th>
@@ -20,7 +18,7 @@ const TableData = ({ users: data, handelRoleChange }) => {
 						{data.map((item, index) => (
 							<tr key={item._id}>
 								<td>{index + 1}</td>
-								
+
 								<td>{item?.email}</td>
 								<td>{item?.role || "Student"}</td>
 								<td className=' flex items-center justify-center gap-2'>
@@ -29,7 +27,10 @@ const TableData = ({ users: data, handelRoleChange }) => {
 										<>
 											<button
 												onClick={() =>
-													handelRoleChange("admin", item)
+													handelRoleChange(
+														"admin",
+														item
+													)
 												}
 												className='bg-green-200 px-3 py-1 rounded-md'
 											>
@@ -38,7 +39,8 @@ const TableData = ({ users: data, handelRoleChange }) => {
 											<button
 												onClick={() =>
 													handelRoleChange(
-														"instractor", item
+														"instractor",
+														item
 													)
 												}
 												className='bg-rose-200 px-3 py-1 rounded-md'
@@ -52,7 +54,8 @@ const TableData = ({ users: data, handelRoleChange }) => {
 												<button
 													onClick={() =>
 														handelRoleChange(
-															"admin", item
+															"admin",
+															item
 														)
 													}
 													className='bg-green-200 px-3 py-1 rounded-md'
