@@ -3,21 +3,8 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useRef } from "react";
 
-const DenyModal = ({
-	modalHandler,
-	closeModal,
-	isOpen,
-	id,
-	handelChangeStatus,
-	showFeedback
-}) => {
-	const feedbackRef = useRef(null);
-	const submitFeedback = e => {
-		const feedBack = feedbackRef.current.value;
-
-		handelChangeStatus("deny", id, feedBack);
-		closeModal();
-	};
+const DenyMessageShow = ({ closeModal, isOpen, fbd }) => {
+	console.log(fbd);
 	return (
 		<Transition
 			appear
@@ -26,7 +13,7 @@ const DenyModal = ({
 		>
 			<Dialog
 				as='div'
-				className='relative z-10'
+				className='relative z-10 '
 				onClose={closeModal}
 			>
 				<Transition.Child
@@ -57,21 +44,11 @@ const DenyModal = ({
 									as='h3'
 									className='text-lg font-medium leading-6 text-gray-900'
 								>
-									Feed Back!! {showFeedback}
+									Admin's Feed Back!!
 								</Dialog.Title>
 								<div className='mt-2'>
-									<textarea
-										ref={feedbackRef}
-										name=''
-										id=''
-										className='w-full h-[150px] outline-none border border-common-color p-2 '
-									></textarea>
-
-									<p className='text-sm text-gray-500'>
-										If admin deny any class approval then
-										student won't be abail to see this class
-										on dashobard. Instractour will see this
-										feebback!!!
+									<p className='text-sm bg-red-100 text-red-500 p-2 font-bold '>
+										{fbd}
 									</p>
 								</div>
 
@@ -79,9 +56,9 @@ const DenyModal = ({
 									<button
 										type='button'
 										className='inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2'
-										onClick={submitFeedback}
+										onClick={closeModal}
 									>
-										Submit Feed Back
+										Close
 									</button>
 								</div>
 							</Dialog.Panel>
@@ -93,4 +70,4 @@ const DenyModal = ({
 	);
 };
 
-export default DenyModal;
+export default DenyMessageShow;

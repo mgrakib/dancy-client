@@ -9,10 +9,13 @@ import DenyModal from '../Modal/DenyModal';
 import axios from 'axios';
 import useAuth from '../../hooks/useAuth';
 import useRole from '../../hooks/useRole';
+import { TbMessageDots } from "react-icons/tb";
+import useModal from '../../hooks/useModal';
+import DenyMessageShow from '../Modal/DenyMessageShow';
 
 const ClassesCard = ({
 	singleClass,
-	openModal,
+	
 	refetch,
 	isAdmin,
 	isInstructor,
@@ -30,19 +33,24 @@ const ClassesCard = ({
 		availableSeats,
 		price,
 		status,
+		feedBack
 	} = singleClass;
 
 	// check role for disable btn
 	const { role } = useRole();
-
+	const { isOpen:FBMisOpen, closeModal:FBMcloseModal, openModal:FBMopenModal } = useModal();
+	
 	let [isOpen, setIsOpen] = useState(false);
 	function closeModal() {
 		setIsOpen(false);
 	}
 
-	function openModal() {
+	function openModal(value) {
+
 		setIsOpen(true);
 	}
+
+	
 
 	// change status
 	const handelChangeStatus = async (statusValue, id, feedBack) => {
@@ -111,9 +119,18 @@ const ClassesCard = ({
 										: status === "approved"
 										? "text-green-500"
 										: "text-red-500"
-								}`}
+								} relative`}
 							>
 								{status}
+
+								{status === "deny" && (
+									<div className='absolute -top-1 -right-4 cursor-pointer'>
+										<TbMessageDots
+											onClick={() => FBMopenModal()}
+											title='Feedback from Admin'
+										/>
+									</div>
+								)}
 							</span>
 						</p>
 					</div>
@@ -194,6 +211,12 @@ const ClassesCard = ({
 				isOpen={isOpen}
 				id={_id}
 				handelChangeStatus={handelChangeStatus}
+			/>
+
+			<DenyMessageShow
+				closeModal={FBMcloseModal}
+				isOpen={FBMisOpen}
+				fbd={feedBack}
 			/>
 		</div>
 	);
