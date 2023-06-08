@@ -5,14 +5,12 @@ import SocialLogin from "../../Components/SocialLogin/SocialLogin";
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
 import { useState } from "react";
-import { toast } from "react-hot-toast";
-import Swal from "sweetalert2";
-import axios from "axios";
-
+import { TbFidgetSpinner } from "react-icons/tb";
 
 const Login = () => {
-	const { userLogin } = useAuth();
+	const { userLogin,loading,  setLoading } = useAuth();
 	const [error, setError] = useState("");
+
 	const {
 		register,
 		handleSubmit,
@@ -20,10 +18,10 @@ const Login = () => {
 		formState: { errors },
 	} = useForm();
 	const onSubmit = data => {
+		
 		setError('');
 		userLogin(data.email, data.password).then(() => {
 
-			
 			// axios.post(`http://localhost:5000/users`, data.email).then(res => {
 			// 	// TODO: navigate home
 			// 	Swal.fire({
@@ -36,6 +34,7 @@ const Login = () => {
 			// })
 			
 		}).catch((err) => {
+			setLoading(false);
 			setError(err.message)
 		});
 	};
@@ -121,11 +120,14 @@ const Login = () => {
 					</div>
 
 					<div>
-						<input
+						<button
 							type='submit'
-							className='bg-[#63AC45] w-full rounded-md py-3 text-white cursor-pointer'
-							value='Continue'
-						/>
+							className='bg-[#63AC45] w-full rounded-md py-3 text-white cursor-pointer text-center'
+							disabled={loading}
+						>
+						{loading ? <TbFidgetSpinner className="w-full animate-spin" /> :"Sing in" }	
+						</button>
+						
 					</div>
 				</form>
 				<div className='space-y-1'>

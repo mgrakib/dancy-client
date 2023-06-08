@@ -16,7 +16,7 @@ const useUser = () => {
 			},
 		});
 
-    console.log(users, "hook");
+    
     return { users, loading, refetch };
 }
 

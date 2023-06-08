@@ -8,7 +8,13 @@ import { useState } from 'react';
 import DenyModal from '../Modal/DenyModal';
 import axios from 'axios';
 
-const ClassesCard = ({ singleClass, openModal, refetch }) => {
+const ClassesCard = ({
+	singleClass,
+	openModal,
+	refetch,
+	isAdmin,
+	isInstructor,
+}) => {
 	let [isOpen, setIsOpen] = useState(false);
 	function closeModal() {
 		setIsOpen(false);
@@ -25,7 +31,6 @@ const ClassesCard = ({ singleClass, openModal, refetch }) => {
 			.put(`http://localhost:5000/update-class-status`, status)
 			.then(res => {
 				refetch();
-				
 			});
 	};
 
@@ -54,7 +59,7 @@ const ClassesCard = ({ singleClass, openModal, refetch }) => {
 						className='flex items-center gap-2'
 						title='Instractor Email'
 					>
-						<GrMail /> {singleClass?.instructorName}
+						<GrMail /> {singleClass?.instructorEmail}
 					</p>
 				</div>
 				<div className='py-2 flex items-center justify-between'>
@@ -87,22 +92,35 @@ const ClassesCard = ({ singleClass, openModal, refetch }) => {
 						</span>
 					</p>
 				</div>
-				<div className='flex items-center gap-4'>
-					<div
-						onClick={() =>
-							handelChangeStatus("approved", singleClass._id)
-						}
-					>
-						<Button label={"Approve"} />
-					</div>
+				{isAdmin && (
+					<div className='flex items-center gap-4'>
+						<div
+							onClick={() =>
+								handelChangeStatus("approved", singleClass._id)
+							}
+						>
+							<Button label={"Approve"} />
+						</div>
 
-					<div
-						onClick={openModal}
-						className=''
-					>
-						<Button label={"Deny"} />
+						<div
+							onClick={openModal}
+							className=''
+						>
+							<Button label={"Deny"} />
+						</div>
 					</div>
-				</div>
+				)}
+
+				{/* if instracture  */}
+				{isInstructor && (
+					<div className='flex items-center gap-4'>
+						<div
+							
+						>
+							<Button label={"Update"} />
+						</div>
+					</div>
+				)}
 			</div>
 
 			<DenyModal

@@ -25,6 +25,7 @@ const ManageClasses = () => {
 							key={singleClass?._id}
 							singleClass={singleClass}
 							refetch={refetch}
+							isAdmin={true}
 						/>
 					))}
 				</div>

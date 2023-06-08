@@ -1,3 +1,5 @@
+/** @format */
+
 import { createContext, useEffect, useState } from "react";
 
 import {
@@ -13,11 +15,8 @@ import {
 
 import { app } from "../Firebase/Firebase.confg";
 
-
-
 export const AuthContext = createContext({});
 const auth = getAuth(app);
-
 
 const AuthProvider = ({ children }) => {
 	const [user, setUser] = useState(null);
@@ -51,14 +50,14 @@ const AuthProvider = ({ children }) => {
 	};
 
 	const logOut = () => {
-		signOut(auth)
+		signOut(auth);
 	};
 
 	// onAuthStateChanged
 	useEffect(() => {
 		const unsubscribe = onAuthStateChanged(auth, currentUser => {
 			setUser(currentUser);
-setLoading(false);
+			setLoading(false);
 			// if (currentUser) {
 			// 	const loogedUser = { email: currentUser.email };
 			// setLoading(false);
@@ -70,7 +69,7 @@ setLoading(false);
 			// 					"access-token",
 			// 					res.data.token
 			// 				),
-						
+
 			// 		);
 			// } else {
 			// 	localStorage.removeItem("access-token");
@@ -83,6 +82,7 @@ setLoading(false);
 	const authInfo = {
 		user,
 		loading,
+		setLoading,
 		createUser,
 		updateUserNamePhoto,
 		userLogin,
@@ -93,6 +93,5 @@ setLoading(false);
 		<AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
 	);
 };
-
 
 export default AuthProvider;

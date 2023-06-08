@@ -10,9 +10,11 @@ import useAuth from "../../hooks/useAuth";
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
+import { TbFidgetSpinner } from "react-icons/tb";
 
 const SignUp = () => {
-	const { createUser, updateUserNamePhoto, user } = useAuth();
+	const { createUser, updateUserNamePhoto, user, loading, setLoading } =
+		useAuth();
 	const [error, setError] = useState('');
 	const {
 		register,
@@ -343,10 +345,18 @@ const SignUp = () => {
 						</div>
 
 						<div>
-							<input
+							
+							<button
 								type='submit'
-								className='bg-[#63AC45] w-full rounded-md py-3 text-white cursor-pointer'
-							/>
+								className='bg-[#63AC45] w-full rounded-md py-3 text-white cursor-pointer text-center'
+								disabled={loading}
+							>
+								{loading ? (
+									<TbFidgetSpinner className='w-full animate-spin' />
+								) : (
+									"Sing Up"
+								)}
+							</button>
 						</div>
 					</form>
 

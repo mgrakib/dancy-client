@@ -14,7 +14,7 @@ const ManageUsers = () => {
 			.put("http://localhost:5000/update-user-role", roleStatus)
 			.then(res => {
 				// refetch();
-				console.log(res.data);
+				
 			});
 	};
 

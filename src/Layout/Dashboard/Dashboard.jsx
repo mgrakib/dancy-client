@@ -44,7 +44,7 @@ const Dashboard = () => {
 						<IoHome /> Instractor Home
 					</li>
 				</Link>
-				<Link to='/dashboard/manage-users'>
+				<Link to='/dashboard/my-classes'>
 					<li className='text-gray-color  p-4 flex items-center gap-2 text-lg'>
 						<FaUsers /> My Classes
 					</li>
