@@ -2,9 +2,11 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
 import useAuth from "../../../hooks/useAuth";
 import axios from "axios";
+import useCartClass from "../../../hooks/useCartClass";
 
 const CheckoutForm = ({ price, cartClasses }) => {
 	const { user } = useAuth();
+	const { refetch } = useCartClass();
 	const stripe = useStripe();
 	const elements = useElements();
 	const [error, setError] = useState("");
@@ -75,6 +77,7 @@ const CheckoutForm = ({ price, cartClasses }) => {
 			setTransactionID(paymentIntent.id);
 			const payment = {
 				email: user?.email,
+				price,
 				transactionID: paymentIntent.id,
 				quantity: cartClasses.length,
 				date: new Date(),
@@ -85,7 +88,10 @@ const CheckoutForm = ({ price, cartClasses }) => {
             
             axios
 				.post("http://localhost:5000/payments",  payment)
-				.then(res => console.log(res.data));
+				.then(res => {
+					refetch();
+					console.log(res.data)
+				});
 
 		}
 	};
