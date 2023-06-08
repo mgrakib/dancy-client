@@ -13,15 +13,13 @@ const PopularClass = () => {
     return (
 		<div className=''>
 			<Container>
-				
-					<SectionTitle
-						title={"CHOOSE YOUR DANCE STYLE"}
-						subTitle={"OUR POPULAR CLASS"}
-						isCenter={true}
-					/>
-			
+				<SectionTitle
+					title={"CHOOSE YOUR DANCE STYLE"}
+					subTitle={"OUR POPULAR CLASS"}
+					isCenter={true}
+				/>
 
-				<div className='flex items-center justify-center'>
+				<div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
 					{classes.map(singleClass => (
 						<Card key={singleClass._id} />
 					))}

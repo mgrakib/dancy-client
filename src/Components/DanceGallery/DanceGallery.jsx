@@ -18,24 +18,22 @@ const DanceGallery = () => {
 			data-aos='fade-up'
 			data-aos-anchor-placement='top-bottom'
 		>
-			
 			<div>
-				
-					<SectionTitle
-						isCenter={true}
-						title={"Show Your Talent"}
-						subTitle={"Dance Gallery"}
-						details={
-							"It's Time to show your tallent to all the people of the World"
-						}
-					/>
-				
+				<SectionTitle
+					isCenter={true}
+					title={"Show Your Talent"}
+					subTitle={"Dance Gallery"}
+					details={
+						"It's Time to show your tallent to all the people of the World"
+					}
+				/>
+
 				<div className='grid grid-cols-1  md:grid-cols-4 grid-rows-4'>
 					<div className='gallery-div md:col-span-2 md:row-span-2'>
 						<img
 							src={danch5}
 							alt=''
-							className=''
+							className='w-full'
 						/>
 						<div className='gallery-overlay'>
 							<h3 className='text-3xl font-semibold'>
@@ -60,6 +58,7 @@ const DanceGallery = () => {
 						<img
 							src={danch2}
 							alt=''
+							className='w-full'
 						/>
 						<div className='gallery-overlay'>
 							<h3 className='text-3xl font-semibold'>
@@ -72,6 +71,7 @@ const DanceGallery = () => {
 						<img
 							src={danch3}
 							alt=''
+							className='w-full'
 						/>
 						<div className='gallery-overlay'>
 							<h3 className='text-3xl font-semibold'>
@@ -84,6 +84,7 @@ const DanceGallery = () => {
 						<img
 							src={danch4}
 							alt=''
+							className='w-full'
 						/>
 						<div className='gallery-overlay'>
 							<h3 className='text-3xl font-semibold'>
@@ -96,6 +97,7 @@ const DanceGallery = () => {
 						<img
 							src={danch5}
 							alt=''
+							className='w-full'
 						/>
 						<div className='gallery-overlay'>
 							<h3 className='text-3xl font-semibold'>
@@ -108,6 +110,7 @@ const DanceGallery = () => {
 						<img
 							src={danch2}
 							alt=''
+							className='w-full'
 						/>
 						<div className='gallery-overlay'>
 							<h3 className='text-3xl font-semibold'>
@@ -120,6 +123,7 @@ const DanceGallery = () => {
 						<img
 							src={danch5}
 							alt=''
+							className='w-full'
 						/>
 						<div className='gallery-overlay'>
 							<h3 className='text-3xl font-semibold'>

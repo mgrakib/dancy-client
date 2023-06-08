@@ -14,6 +14,7 @@ const CheckoutForm = ({ price, cartClasses }) => {
 	const [transactionID, setTransactionID] = useState("");
 	const [processing, setProcessing] = useState(false);
 
+	
 	useEffect(() => {
 		// Create PaymentIntent as soon as the page loads
 		fetch("http://localhost:5000/create-payment-intent", {
