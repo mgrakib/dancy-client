@@ -7,6 +7,8 @@ import Button from '../Button/Button';
 import { useState } from 'react';
 import DenyModal from '../Modal/DenyModal';
 import axios from 'axios';
+import useAuth from '../../hooks/useAuth';
+import useRole from '../../hooks/useRole';
 
 const ClassesCard = ({
 	singleClass,
@@ -14,9 +16,9 @@ const ClassesCard = ({
 	refetch,
 	isAdmin,
 	isInstructor,
-	user
+	isUser,
+	handerAddClass,
 }) => {
-
 	const {
 		_id,
 		img,
@@ -27,6 +29,10 @@ const ClassesCard = ({
 		price,
 		status,
 	} = singleClass;
+
+	// check role for disable btn 
+	const { role } = useRole();
+	
 
 	let [isOpen, setIsOpen] = useState(false);
 	function closeModal() {
@@ -49,7 +55,9 @@ const ClassesCard = ({
 
 	return (
 		<div
-			className={`rounded-tl-lg rounded-tr-lg overflow-hidden  border border-secondary-color  card-container duration-500 ${availableSeats === 0 && 'bg-red-200' }`}
+			className={`rounded-tl-lg rounded-tr-lg overflow-hidden  border border-secondary-color  card-container duration-500 ${
+				availableSeats === 0 && "bg-red-200"
+			}`}
 		>
 			<div className='h-[250px]  overflow-hidden'>
 				<img
@@ -82,8 +90,7 @@ const ClassesCard = ({
 						className='flex items-center gap-2'
 						title='Available Sets'
 					>
-						<MdEventAvailable /> Available Seats:{" "}
-						{availableSeats}
+						<MdEventAvailable /> Available Seats: {availableSeats}
 					</p>
 
 					<p className='flex items-center gap-2'>
@@ -115,9 +122,7 @@ const ClassesCard = ({
 				{isAdmin && (
 					<div className='flex items-center gap-4'>
 						<div
-							onClick={() =>
-								handelChangeStatus("approved", _id)
-							}
+							onClick={() => handelChangeStatus("approved", _id)}
 						>
 							<Button
 								bgColor={"bg-green-500"}
@@ -149,12 +154,17 @@ const ClassesCard = ({
 					</div>
 				)}
 
-				{user && (
+				{isUser && (
 					<div className='flex items-center gap-4'>
-						<div>
+						<div onClick={() => handerAddClass(singleClass)}>
 							<Button
 								bgColor={"bg-secondary-color"}
 								label={"Select"}
+								isDisable={
+									availableSeats === 0 ||
+									role === "admin" ||
+									role === "instractor"
+								}
 							/>
 						</div>
 					</div>
