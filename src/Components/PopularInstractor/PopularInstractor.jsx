@@ -10,7 +10,7 @@ const PopularInstractor = () => {
     const {data: instractors = [], refetch } = useQuery({
         queryKey: ['instractor'],
         queryFn: async () => {
-            const reslut = await axios("http://localhost:5000/instructor")
+            const reslut = await axios("https://twelve-assignment-server-mgrakib.vercel.app/instructor")
             return reslut.data;
         }
     })

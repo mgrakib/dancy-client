@@ -51,7 +51,7 @@ const SignUp = () => {
 								.then(async () => {
 									await axios
 										.post(
-											`http://localhost:5000/users`,
+											`https://twelve-assignment-server-mgrakib.vercel.app/users`,
 											{email: data.email}
 										)
 										.then(res => {

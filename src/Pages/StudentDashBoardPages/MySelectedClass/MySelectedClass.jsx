@@ -21,7 +21,7 @@ const MySelectedClass = () => {
 		}).then(result => {
             if (result.isConfirmed) {
                 axios
-					.delete(`http://localhost:5000/delete-cart-class/${id}`)
+					.delete(`https://twelve-assignment-server-mgrakib.vercel.app/delete-cart-class/${id}`)
 					.then(res => {
 						console.log(res.data);
                         refetch();

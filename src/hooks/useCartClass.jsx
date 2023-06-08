@@ -9,7 +9,7 @@ const useCartClass = () => {
         queryKey: ['cartclass', user?.email],
         enabled: !loading,
         queryFn: async () => {
-            const result = await axios(`http://localhost:5000/cart-classes/?email=${user?.email}`);
+            const result = await axios(`https://twelve-assignment-server-mgrakib.vercel.app/cart-classes/?email=${user?.email}`);
             return result.data;
         }
     })

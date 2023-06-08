@@ -22,7 +22,7 @@ const Login = () => {
 		setError('');
 		userLogin(data.email, data.password).then(() => {
 
-			// axios.post(`http://localhost:5000/users`, data.email).then(res => {
+			// axios.post(`https://twelve-assignment-server-mgrakib.vercel.app/users`, data.email).then(res => {
 			// 	// TODO: navigate home
 			// 	Swal.fire({
 			// 		position: "top-end",
