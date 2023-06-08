@@ -8,7 +8,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import './HeroImgSlider.css'
 
-import { Pagination } from "swiper";
+import {Autoplay,  Pagination } from "swiper";
 
 import sliderImg1 from '../../assets/HeroImg/heroImg1.jpg'
 import sliderImg2 from '../../assets/HeroImg/heroImg2.jpg'
@@ -26,7 +26,11 @@ const HeroImgSlider = () => {
 				pagination={{
 					clickable: true,
 				}}
-				modules={[Pagination]}
+				autoplay={{
+					delay: 2500,
+					disableOnInteraction: false,
+				}}
+				modules={[Pagination, Autoplay]}
 				className='mySwiper'
 			>
 				<SwiperSlide>
@@ -77,7 +81,6 @@ const HeroImgSlider = () => {
 						/>
 					</div>
 				</SwiperSlide>
-				
 			</Swiper>
 		</div>
 	);
