@@ -16,7 +16,6 @@ import DenyMessageShow from '../Modal/DenyMessageShow';
 
 const ClassesCard = ({
 	singleClass,
-	
 	refetch,
 	isAdmin,
 	isInstructor,
@@ -24,6 +23,7 @@ const ClassesCard = ({
 	handerAddClass,
 	isCart,
 	handelRemoveToCart,
+	handelPayment,
 }) => {
 	const {
 		_id,
@@ -38,23 +38,23 @@ const ClassesCard = ({
 		totalStudent,
 	} = singleClass;
 
-
 	const { user } = useAuth();
 	// check role for disable btn
 	const { role } = useRole();
-	const { isOpen:FBMisOpen, closeModal:FBMcloseModal, openModal:FBMopenModal } = useModal();
-	
+	const {
+		isOpen: FBMisOpen,
+		closeModal: FBMcloseModal,
+		openModal: FBMopenModal,
+	} = useModal();
+
 	let [isOpen, setIsOpen] = useState(false);
 	function closeModal() {
 		setIsOpen(false);
 	}
 
 	function openModal(value) {
-
 		setIsOpen(true);
 	}
-
-	
 
 	// change status
 	const handelChangeStatus = async (statusValue, id, feedBack) => {
@@ -62,7 +62,6 @@ const ClassesCard = ({
 		const result = await axios
 			.put(`http://localhost:5000/update-class-status`, status)
 			.then(res => {
-
 				if (statusValue === "approved") {
 					axios
 						.put(`http://localhost:5000/update-instructor-info`, {
@@ -214,6 +213,17 @@ const ClassesCard = ({
 							<Button
 								bgColor={"bg-secondary-color"}
 								label={"Remove To Cart"}
+								isDisable={
+									availableSeats === 0 ||
+									role === "admin" ||
+									role === "instractor"
+								}
+							/>
+						</div>
+						<div onClick={() => handelPayment(singleClass)}>
+							<Button
+								bgColor={"bg-secondary-color"}
+								label={"Pay"}
 								isDisable={
 									availableSeats === 0 ||
 									role === "admin" ||

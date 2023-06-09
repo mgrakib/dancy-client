@@ -4,7 +4,7 @@ import useAuth from "../../../hooks/useAuth";
 import axios from "axios";
 import useCartClass from "../../../hooks/useCartClass";
 
-const CheckoutForm = ({ price, cartClasses }) => {
+const CheckoutForm = ({ price, targetClass }) => {
 	const { user } = useAuth();
 	const { refetch } = useCartClass();
 	const stripe = useStripe();
@@ -14,24 +14,18 @@ const CheckoutForm = ({ price, cartClasses }) => {
 	const [transactionID, setTransactionID] = useState("");
 	const [processing, setProcessing] = useState(false);
 
-	
-	
-	https: useEffect(() => {
+	useEffect(() => {
 		if (price > 0) {
 			// Create PaymentIntent as soon as the page loads
-			fetch(
-				"http://localhost:5000/create-payment-intent",
-				{
-					method: "POST",
-					headers: { "Content-Type": "application/json" },
-					body: JSON.stringify({ price }),
-				}
-			)
+			fetch("http://localhost:5000/create-payment-intent", {
+				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify({ price }),
+			})
 				.then(res => res.json())
 				.then(data => setClientSecret(data.clientSecret));
 		}
 	}, [price]);
-	
 
 	const handleSubmit = async event => {
 		// Block native form submission.
@@ -87,19 +81,17 @@ const CheckoutForm = ({ price, cartClasses }) => {
 				email: user?.email,
 				price,
 				transactionID: paymentIntent.id,
-				quantity: cartClasses.length,
 				date: new Date(),
-				cartClassesId: cartClasses.map(singleClass => singleClass._id),
-				classId: cartClasses.map(singleClass => singleClass.classId),
-				cartClassName: cartClasses.map(singleClass => singleClass.name),
+				// quantity: cartClasses.length,
+				quantity: 1,
+				cartClassesId: targetClass._id,
+				classId: targetClass.classId,
+				cartClassName: targetClass.name
 			};
-            
-            axios
-				.post("http://localhost:5000/payments",  payment)
-				.then(res => {
-					refetch();
-				});
 
+			axios.post("http://localhost:5000/payments", payment).then(res => {
+				refetch();
+			});
 		}
 	};
 	return (

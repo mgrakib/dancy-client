@@ -5,9 +5,28 @@ import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 import useCartClass from "../../../hooks/useCartClass";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import PaymentModal from "../../../Components/Modal/PaymentModal";
 
 const MySelectedClass = () => {
-    const { cartClasses, refetch } = useCartClass();
+	const { cartClasses, refetch } = useCartClass();
+	let [isOpen, setIsOpen] = useState(false);
+	const [targetClass, setTargetClass] = useState({});
+
+	function closeModal() {
+		setIsOpen(false);
+	}
+
+	function openModal() {
+		setIsOpen(true);
+	}
+
+	const handelPayment = setSingleClass => {
+		setTargetClass(setSingleClass);
+		openModal();
+	};
+
+
     
     const handelRemoveToCart = (singleClass) => {
         const id = singleClass._id;
@@ -50,11 +69,6 @@ const MySelectedClass = () => {
 					<h4 className='text-3xl'>
 						Total Class: {cartClasses.length}
 					</h4>
-					<Link to={"/dashboard/payment"}>
-						<button className='bg-secondary-color text-primary-color py-2 px-6 rounded-md'>
-							Pay
-						</button>
-					</Link>
 				</div>
 				<div className='grid grid-cols-1 md:grid-cols-3 md:gap-10 gap-2 '>
 					{cartClasses.map(singleClass => (
@@ -63,10 +77,17 @@ const MySelectedClass = () => {
 							singleClass={singleClass}
 							isCart={true}
 							handelRemoveToCart={handelRemoveToCart}
+							handelPayment={handelPayment}
 						></ClassesCard>
 					))}
 				</div>
 			</DashboardContainer>
+
+			<PaymentModal
+				isOpen={isOpen}
+				closeModal={closeModal}
+				targetClass={targetClass}
+			/>
 		</div>
 	);
 };
