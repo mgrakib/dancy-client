@@ -1,3 +1,5 @@
+/** @format */
+
 import DashboardContainer from "../../../Components/DashboardContainer/DashboardContainer";
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 import { useForm } from "react-hook-form";
@@ -6,8 +8,8 @@ import axios from "axios";
 import { TbFidgetSpinner } from "react-icons/tb";
 import { toast } from "react-hot-toast";
 const AddAnClass = () => {
-    const { user, loading, setLoading } = useAuth();
-    const {
+	const { user, loading, setLoading } = useAuth();
+	const {
 		register,
 		handleSubmit,
 		watch,
@@ -15,61 +17,50 @@ const AddAnClass = () => {
 	} = useForm();
 	const onSubmit = data => {
 		setLoading(true);
-        const classImage = data.image[0];
-        const formData = new FormData();
-        formData.append("image", classImage);
-        
+		const classImage = data.image[0];
+		const formData = new FormData();
+		formData.append("image", classImage);
 
-        axios.post(
-			`https://api.imgbb.com/1/upload?key=${
-				import.meta.env.VITE_IMAGE_HOSTING_TOKEN
-			}`,
-			formData
-        ).then(res => {
-            const img = res.data.data.display_url;
-            
-            const {
-				name,
-				instructorName,
-				instructorEmail,
-				price,
-				availableSeats,
-			} = data;
+		axios
+			.post(
+				`https://api.imgbb.com/1/upload?key=${
+					import.meta.env.VITE_IMAGE_HOSTING_TOKEN
+				}`,
+				formData
+			)
+			.then(res => {
+				const img = res.data.data.display_url;
 
-            const newClass = {
-				name,
-				instructorEmail: instructorEmail || user?.email,
-				instructorName: instructorName || user?.displayName,
-				price: parseFloat(price),
-				img,
-				availableSeats: parseFloat(availableSeats),
-				status: "pending",
-				totalStudent: 0,
-            };
-            
+				const {
+					name,
+					instructorName,
+					instructorEmail,
+					price,
+					availableSeats,
+				} = data;
 
-            axios
-				.post(`http://localhost:5000/add-an-class`, newClass)
-				.then(res => {
+				const newClass = {
+					name,
+					instructorEmail: instructorEmail || user?.email,
+					instructorName: instructorName || user?.displayName,
+					price: parseFloat(price),
+					img,
+					availableSeats: parseFloat(availableSeats),
+					status: "pending",
+					totalStudent: 0,
+				};
 
-					console.log(name)
-					axios
-						.put(`http://localhost:5000/update-instructor-info`, {
-							name,
-							email: user?.email,
-						})
-						.then(res => {
-							console.log(res.data);
-							toast.success("Successfully add!");
-							setLoading(false);
-						});
-					
-				});
-
-
-        }).catch(err => setLoading(false))
-    };
-    return (
+				axios
+					.post(`http://localhost:5000/add-an-class`, newClass)
+					.then(res => {
+						toast.success("Successfully add!");
+						setLoading(false);
+						
+					});
+			})
+			.catch(err => setLoading(false));
+	};
+	return (
 		<div>
 			<DashboardContainer>
 				<div className='text-center'>

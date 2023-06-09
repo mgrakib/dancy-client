@@ -38,6 +38,8 @@ const ClassesCard = ({
 		totalStudent,
 	} = singleClass;
 
+
+	const { user } = useAuth();
 	// check role for disable btn
 	const { role } = useRole();
 	const { isOpen:FBMisOpen, closeModal:FBMcloseModal, openModal:FBMopenModal } = useModal();
@@ -60,6 +62,17 @@ const ClassesCard = ({
 		const result = await axios
 			.put(`http://localhost:5000/update-class-status`, status)
 			.then(res => {
+
+				if (statusValue === "approved") {
+					axios
+						.put(`http://localhost:5000/update-instructor-info`, {
+							name,
+							email: instructorEmail,
+						})
+						.then(res => {
+							console.log(res.data);
+						});
+				}
 				refetch();
 			});
 	};
