@@ -16,7 +16,6 @@ const MyClasses = () => {
 	}
    
 
-    // console.log(instructorCalsses);
     return (
 		<div className='w-full '>
 			<DashboardContainer>

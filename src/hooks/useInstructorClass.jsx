@@ -6,7 +6,6 @@ const useInstructorClass = () => {
     const { user, loading } = useAuth();
     const email = { email: user?.email }
     
-    console.log(email)
     const {data:instructorCalsses =[], isLoading, refetch } = useQuery({
         queryKey: ['instructor-classes'],
         enabled: !loading,

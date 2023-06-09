@@ -110,8 +110,9 @@ const ClassesCard = ({
 				</div>
 
 				{/* show status if admin and instractor  */}
-				{(isAdmin || isInstructor) && (
-					<div className='flex items-center justify-between'>
+
+				<div className='flex items-center justify-between'>
+					{(isAdmin || isInstructor) && (
 						<p className='pb-4'>
 							Status :{" "}
 							<span
@@ -135,15 +136,13 @@ const ClassesCard = ({
 								)}
 							</span>
 						</p>
-						{/* Total Enrolled */}
-						<p className='pb-4 flex items-center gap-2'>
-						<AiOutlineUsergroupAdd /> 	Total Enrolled :{" "}
-							<span className={`text-green-500`}>
-								{totalStudent}
-							</span>
-						</p>
-					</div>
-				)}
+					)}
+					{/* Total Enrolled */}
+					<p className='pb-4 flex items-center gap-2'>
+						<AiOutlineUsergroupAdd /> Total Enrolled :{" "}
+						<span className={`text-green-500`}>{totalStudent}</span>
+					</p>
+				</div>
 
 				{/* if admin then  show approved and deny btn  */}
 				{isAdmin && (

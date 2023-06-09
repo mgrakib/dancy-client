@@ -18,7 +18,7 @@ const AddAnClass = () => {
         const classImage = data.image[0];
         const formData = new FormData();
         formData.append("image", classImage);
-        console.log(data)
+        
 
         axios.post(
 			`https://api.imgbb.com/1/upload?key=${
@@ -46,14 +46,12 @@ const AddAnClass = () => {
 				totalStudent: 0,
             };
             
-            console.log(newClass)
 
             axios
 				.post(`http://localhost:5000/add-an-class`, newClass)
 				.then(res => {
 					toast.success("Successfully add!");
 					setLoading(false);
-					console.log(res.data)
 				});
 
 

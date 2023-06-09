@@ -18,7 +18,6 @@ const ManageUsers = () => {
 			});
 	};
 
-	console.log(users, "manage");
 	// if (isLoading) {
 	// 	return <p>Loading...</p>;
 	// }

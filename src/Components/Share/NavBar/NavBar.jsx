@@ -29,15 +29,24 @@ const NavBar = () => {
 			<Link className='nav-items'>
 				<li>Home</li>
 			</Link>
-			<Link className='nav-items'>
+			<Link
+				to={"/nstructors"}
+				className='nav-items'
+			>
 				<li>Instructors</li>
 			</Link>
-			<Link to={'/classes'} className='nav-items'>
+			<Link
+				to={"/classes"}
+				className='nav-items'
+			>
 				<li>Classes</li>
 			</Link>
 			{user && (
 				<>
-					<Link to={'/dashboard'} className='nav-items'>
+					<Link
+						to={"/dashboard"}
+						className='nav-items'
+					>
 						<li>Dashboard</li>
 					</Link>
 					<li className='px-[30px] md:px-0'>

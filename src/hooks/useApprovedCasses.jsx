@@ -3,7 +3,7 @@ import { useQuery } from "react-query";
 
 const useApprovedCasses = (numerOfData, sort) => {
 
-    
+
 	// TODO: first fetch all data
 	const {
 		data: approvedClasses = [],

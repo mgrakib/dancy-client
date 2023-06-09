@@ -13,6 +13,7 @@ const Payment = () => {
 	const total = cartClasses.reduce((sum, item) => sum+ item.price ,0)
 	const price = parseFloat(total.toFixed(2));
 	
+	// TODO:payment 
     return (
 		<div className='w-full'>
 			<DashboardContainer>

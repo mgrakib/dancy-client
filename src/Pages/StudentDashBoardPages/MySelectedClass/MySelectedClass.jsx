@@ -24,7 +24,6 @@ const MySelectedClass = () => {
                 axios
 					.delete(`http://localhost:5000/delete-cart-class/${id}`)
 					.then(res => {
-						console.log(res.data);
                         refetch();
                         Swal.fire(
 							"Remove!",

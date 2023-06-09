@@ -98,7 +98,6 @@ const CheckoutForm = ({ price, cartClasses }) => {
 				.post("http://localhost:5000/payments",  payment)
 				.then(res => {
 					refetch();
-					console.log(res.data)
 				});
 
 		}

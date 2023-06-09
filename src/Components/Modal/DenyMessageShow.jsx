@@ -4,7 +4,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useRef } from "react";
 
 const DenyMessageShow = ({ closeModal, isOpen, fbd }) => {
-	console.log(fbd);
+	
 	return (
 		<Transition
 			appear

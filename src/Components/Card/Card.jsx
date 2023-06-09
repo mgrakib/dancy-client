@@ -22,7 +22,7 @@ const Card = ({ singleClass }) => {
 		totalStudent,
 	} = singleClass;
 	return (
-		<div className='group overflow-hidden rounded-sm flex flex-col shadow-md class-container'>
+		<div className='group overflow-hidden rounded-sm flex flex-col shadow-md class-container '>
 			<div className='min-h-[250px]'>
 				<img
 					src={img}
