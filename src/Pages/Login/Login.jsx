@@ -6,11 +6,12 @@ import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
 import { useState } from "react";
 import { TbFidgetSpinner } from "react-icons/tb";
+import { BsEye, BsEyeSlash } from "react-icons/bs";
 
 const Login = () => {
 	const { userLogin,loading,  setLoading } = useAuth();
 	const [error, setError] = useState("");
-
+	const [showPassword, setShowPassword] = useState(false);
 	const {
 		register,
 		handleSubmit,
@@ -22,7 +23,7 @@ const Login = () => {
 		setError('');
 		userLogin(data.email, data.password).then(() => {
 
-			// axios.post(`https://twelve-assignment-server-mgrakib.vercel.app/users`, data.email).then(res => {
+			// axios.post(`http://localhost:5000/users`, data.email).then(res => {
 			// 	// TODO: navigate home
 			// 	Swal.fire({
 			// 		position: "top-end",
@@ -72,6 +73,7 @@ const Login = () => {
 								className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-[#63AC45] bg-gray-200 text-gray-900'
 								data-temp-mail-org='0'
 							/>
+
 							{errors.email?.type === "required" && (
 								<p
 									role='alert'
@@ -91,15 +93,22 @@ const Login = () => {
 								</label>
 							</div>
 							{/* TODO show password  */}
-							<input
-								type='password'
-								id='password'
-								{...register("password", {
-									required: true,
-								})}
-								placeholder='*******'
-								className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-[#63AC45] bg-gray-200 text-gray-900'
-							/>
+							<div className='relative'>
+								<input
+									type={`${
+										showPassword ? "text" : "password"
+									}`}
+									id='password'
+									{...register("password", {
+										required: true,
+									})}
+									placeholder='*******'
+									className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-[#63AC45] bg-gray-200 text-gray-900'
+								/>
+								<div onClick={() => setShowPassword(!showPassword)} className='absolute right-2 top-1/2 -translate-y-1/2 cursor-pointer'>
+									{!showPassword ? <BsEyeSlash /> : <BsEye />}
+								</div>
+							</div>
 							{errors.password?.type === "required" && (
 								<p
 									role='alert'
@@ -125,9 +134,12 @@ const Login = () => {
 							className='bg-[#63AC45] w-full rounded-md py-3 text-white cursor-pointer text-center'
 							disabled={loading}
 						>
-						{loading ? <TbFidgetSpinner className="w-full animate-spin" /> :"Sing in" }	
+							{loading ? (
+								<TbFidgetSpinner className='w-full animate-spin' />
+							) : (
+								"Sing in"
+							)}
 						</button>
-						
 					</div>
 				</form>
 				<div className='space-y-1'>

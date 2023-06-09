@@ -51,7 +51,7 @@ const SignUp = () => {
 								.then(async () => {
 									await axios
 										.post(
-											`https://twelve-assignment-server-mgrakib.vercel.app/users`,
+											`http://localhost:5000/users`,
 											{email: data.email}
 										)
 										.then(res => {
@@ -181,7 +181,7 @@ const SignUp = () => {
 										htmlFor='password'
 										className='text-sm mb-2'
 									>
-										Password
+										Gender
 									</label>
 								</div>
 

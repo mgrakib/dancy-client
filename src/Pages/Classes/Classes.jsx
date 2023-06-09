@@ -17,7 +17,7 @@ const Classes = () => {
         queryKey: ['classes'],
         queryFn: async () => {
             const result = await axios(
-                `https://twelve-assignment-server-mgrakib.vercel.app/approverd-classes`
+                `http://localhost:5000/approverd-classes`
             );
             
             return result.data;
@@ -62,7 +62,7 @@ const Classes = () => {
 			};
             
             axios
-				.post(`https://twelve-assignment-server-mgrakib.vercel.app/class-add-to-cart`, classToCart)
+				.post(`http://localhost:5000/class-add-to-cart`, classToCart)
 				.then(res => {
                     if (res.data.message === 'already added') {
                         alert('this class already added to cart')

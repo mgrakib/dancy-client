@@ -49,7 +49,7 @@ const AddAnClass = () => {
             console.log(newClass)
 
             axios
-				.post(`https://twelve-assignment-server-mgrakib.vercel.app/add-an-class`, newClass)
+				.post(`http://localhost:5000/add-an-class`, newClass)
 				.then(res => {
 					toast.success("Successfully add!");
 					setLoading(false);

@@ -62,7 +62,7 @@ const AuthProvider = ({ children }) => {
 			// 	const loogedUser = { email: currentUser.email };
 			// setLoading(false);
 			// 	axios
-			// 		.post(`https://twelve-assignment-server-mgrakib.vercel.app/jwt`, loogedUser)
+			// 		.post(`http://localhost:5000/jwt`, loogedUser)
 			// 		.then(
 			// 			res =>
 			// 				localStorage.setItem(

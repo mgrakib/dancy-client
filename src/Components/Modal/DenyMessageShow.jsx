@@ -44,7 +44,7 @@ const DenyMessageShow = ({ closeModal, isOpen, fbd }) => {
 									as='h3'
 									className='text-lg font-medium leading-6 text-gray-900'
 								>
-									Admin's Feed Back!!
+									Admin's feedback!!
 								</Dialog.Title>
 								<div className='mt-2'>
 									<p className='text-sm bg-red-100 text-red-500 p-2 font-bold '>

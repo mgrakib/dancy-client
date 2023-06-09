@@ -4,6 +4,7 @@ import DashboardContainer from "../../../Components/DashboardContainer/Dashboard
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 import useCartClass from "../../../hooks/useCartClass";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const MySelectedClass = () => {
     const { cartClasses, refetch } = useCartClass();
@@ -21,7 +22,7 @@ const MySelectedClass = () => {
 		}).then(result => {
             if (result.isConfirmed) {
                 axios
-					.delete(`https://twelve-assignment-server-mgrakib.vercel.app/delete-cart-class/${id}`)
+					.delete(`http://localhost:5000/delete-cart-class/${id}`)
 					.then(res => {
 						console.log(res.data);
                         refetch();
@@ -47,12 +48,14 @@ const MySelectedClass = () => {
 					/>
 				</div>
 				<div className='flex items-center justify-between py-4'>
-					<h4 className='text-3xl'>Total Class: {cartClasses.length}</h4>
-					<div>
+					<h4 className='text-3xl'>
+						Total Class: {cartClasses.length}
+					</h4>
+					<Link to={"/dashboard/payment"}>
 						<button className='bg-secondary-color text-primary-color py-2 px-6 rounded-md'>
 							Pay
 						</button>
-					</div>
+					</Link>
 				</div>
 				<div className='grid grid-cols-1 md:grid-cols-3 md:gap-10 gap-2 '>
 					{cartClasses.map(singleClass => (

@@ -46,6 +46,8 @@ const router = createBrowserRouter([
 		path: "/dashboard",
 		element: <Dashboard />,
 		children: [
+
+		// admin dashboard router
 			{
 				path: "/dashboard",
 				element: <AdminHome />,
@@ -58,6 +60,7 @@ const router = createBrowserRouter([
 				path: "/dashboard/manage-classes",
 				element: <ManageClasses />,
 			},
+			// instracture dashboard router
 			{
 				path: "/dashboard/add-an-class",
 				element: <AddAnClass />,
@@ -66,6 +69,7 @@ const router = createBrowserRouter([
 				path: "/dashboard/my-classes",
 				element: <MyClasses />,
 			},
+			// student dashboard router 
 			{
 				path: "/dashboard/my-selected-classes",
 				element: <MySelectedClass />,

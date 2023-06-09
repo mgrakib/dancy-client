@@ -20,7 +20,7 @@ const CheckoutForm = ({ price, cartClasses }) => {
 		if (price > 0) {
 			// Create PaymentIntent as soon as the page loads
 			fetch(
-				"https://twelve-assignment-server-mgrakib.vercel.app/create-payment-intent",
+				"http://localhost:5000/create-payment-intent",
 				{
 					method: "POST",
 					headers: { "Content-Type": "application/json" },
@@ -95,7 +95,7 @@ const CheckoutForm = ({ price, cartClasses }) => {
 			};
             
             axios
-				.post("https://twelve-assignment-server-mgrakib.vercel.app/payments",  payment)
+				.post("http://localhost:5000/payments",  payment)
 				.then(res => {
 					refetch();
 					console.log(res.data)
