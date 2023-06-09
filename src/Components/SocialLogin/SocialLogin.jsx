@@ -5,14 +5,17 @@ import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 import Swal from "sweetalert2";
 const SocialLogin = () => {
-	const { googleLogin } = useAuth();
+	const { googleLogin, setLoading } = useAuth();
 	const handelGoogleSingIn = () => {
 		googleLogin()
 			.then(async res => {
 
+				console.log(res)
 				await axios
 					.post(`http://localhost:5000/users`, {
 						email: res?.user?.email,
+						userImg: res?.user?.photoURL,
+						name: res?.user?.displayName
 					})
 					.then(res => {
 						// TODO: navigate home
@@ -25,7 +28,10 @@ const SocialLogin = () => {
 						});
 					});
 			})
-			.catch(err => console.log(err.message));
+			.catch(err => {
+				setLoading(false);
+				console.log(err.message)
+			});
 	};
 	return (
 		<div>

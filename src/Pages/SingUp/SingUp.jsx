@@ -52,7 +52,7 @@ const SignUp = () => {
 									await axios
 										.post(
 											`http://localhost:5000/users`,
-											{email: data.email}
+											{email: data.email, userImg: imgURL, name: data.name}
 										)
 										.then(res => {
 											// TODO: navigate home

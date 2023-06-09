@@ -6,21 +6,39 @@ import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 import useUser from "../../../hooks/useUser";
 
 const ManageUsers = () => {
-	const { users } = useUser();
+	const { users, refetch } = useUser();
 
 	const handelRoleChange = async (role, user) => {
 		const roleStatus = { role, email: user?.email };
 		const result = await axios
 			.put("http://localhost:5000/update-user-role", roleStatus)
 			.then(res => {
-				// refetch();
-				
+				axios.post(`http://localhost:5000/make-instructor/${user?.email}`).then(result => {
+					console.log(result.data)
+					refetch();
+				})
 			});
 	};
 
-	// if (isLoading) {
-	// 	return <p>Loading...</p>;
-	// }
+	
+
+// _id
+// 648054557135cb7910807a47
+// name
+// "John Smith"
+// email
+// "john.smith@example.com"
+
+// courses
+// Array
+// 0
+// "Mathematics"
+// 1
+// "Physics"
+// experience
+// 5
+
+
 	return (
 		<div className=''>
 			<SectionTitle

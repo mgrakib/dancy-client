@@ -35,10 +35,11 @@ const AddAnClass = () => {
 				price,
 				availableSeats,
 			} = data;
+
             const newClass = {
 				name,
-				instructorEmail: instructorEmail || user.email,
-				instructorName: instructorName || user.displayName,
+				instructorEmail: instructorEmail || user?.email,
+				instructorName: instructorName || user?.displayName,
 				price: parseFloat(price),
 				img,
 				availableSeats: parseFloat(availableSeats),
@@ -50,8 +51,19 @@ const AddAnClass = () => {
             axios
 				.post(`http://localhost:5000/add-an-class`, newClass)
 				.then(res => {
-					toast.success("Successfully add!");
-					setLoading(false);
+
+					console.log(name)
+					axios
+						.put(`http://localhost:5000/update-instructor-info`, {
+							name,
+							email: user?.email,
+						})
+						.then(res => {
+							console.log(res.data);
+							toast.success("Successfully add!");
+							setLoading(false);
+						});
+					
 				});
 
 

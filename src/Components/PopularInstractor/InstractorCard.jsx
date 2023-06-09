@@ -2,11 +2,14 @@
 import { Link } from 'react-router-dom';
 import second from '../../assets/danch/danch5.jpg'
 import { GoArrowRight } from 'react-icons/go';
+import { HiMail } from "react-icons/hi";
+import { FaUsers } from 'react-icons/fa';
+// import { FaUsersBetweenLines } from "react-icons/fa";
 const InstractorCard = ({ instractor }) => {
-	const { name, courses, experience } = instractor;
+	const { name, className, experience, userImg, email } = instractor;
 	return (
 		<div className='relative group my-auto'>
-			<div>
+			<div className=' flex items-center justify-center'>
 				<img
 					src={second}
 					alt=''
@@ -18,15 +21,23 @@ const InstractorCard = ({ instractor }) => {
 
 				<div className='py-2 max-h-0 overflow-hidden group-hover:max-h-[200px] duration-500'>
 					<div className='text-gray-color'>
-						{courses.map((course, i) => (
-							<p key={i}>{course}</p>
-						))}
+						{className
+							? className.map((course, i) => (
+									<p key={i}>{course}</p>
+							  ))
+							: "No Class available"}
 					</div>
 
-					
-						<div className='flex items-center gap-2 justify-center py-2 text-blue-700'>
-							{experience} students
-						</div>
+					<div className='py-1 flex flex-col items-center '>
+						<p className='flex items-center gap-2'>
+							{" "}
+							<HiMail /> {email}
+						</p>
+						<p className='flex items-center gap-2'>
+							{" "}
+							<FaUsers /> {experience ? experience : 0} students
+						</p>
+					</div>
 				</div>
 			</div>
 		</div>
