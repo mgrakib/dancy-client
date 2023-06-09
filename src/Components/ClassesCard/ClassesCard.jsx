@@ -10,6 +10,7 @@ import axios from 'axios';
 import useAuth from '../../hooks/useAuth';
 import useRole from '../../hooks/useRole';
 import { TbMessageDots } from "react-icons/tb";
+import { AiOutlineUsergroupAdd } from "react-icons/ai";
 import useModal from '../../hooks/useModal';
 import DenyMessageShow from '../Modal/DenyMessageShow';
 
@@ -33,7 +34,8 @@ const ClassesCard = ({
 		availableSeats,
 		price,
 		status,
-		feedBack
+		feedBack,
+		totalStudent,
 	} = singleClass;
 
 	// check role for disable btn
@@ -109,7 +111,7 @@ const ClassesCard = ({
 
 				{/* show status if admin and instractor  */}
 				{(isAdmin || isInstructor) && (
-					<div>
+					<div className='flex items-center justify-between'>
 						<p className='pb-4'>
 							Status :{" "}
 							<span
@@ -131,6 +133,13 @@ const ClassesCard = ({
 										/>
 									</div>
 								)}
+							</span>
+						</p>
+						{/* Total Enrolled */}
+						<p className='pb-4 flex items-center gap-2'>
+						<AiOutlineUsergroupAdd /> 	Total Enrolled :{" "}
+							<span className={`text-green-500`}>
+								{totalStudent}
 							</span>
 						</p>
 					</div>

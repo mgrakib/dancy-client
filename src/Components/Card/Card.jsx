@@ -1,31 +1,71 @@
 import './Card.css'
 
-import second from '../../assets/danch/danch1.jpg'
+
 import RightArrow from '../Arrow/RightArrow';
+import { BiUser } from 'react-icons/bi';
+import { GrMail } from 'react-icons/gr';
+import { MdEventAvailable } from 'react-icons/md';
+import { ImPriceTags } from 'react-icons/im';
+import { AiOutlineUsergroupAdd } from 'react-icons/ai';
 
-
-
-
-const Card = () => {
-    return (
+const Card = ({ singleClass }) => {
+	const {
+		_id,
+		img,
+		name,
+		instructorName,
+		instructorEmail,
+		availableSeats,
+		price,
+		status,
+		feedBack,
+		totalStudent,
+	} = singleClass;
+	return (
 		<div className='group overflow-hidden rounded-sm flex flex-col shadow-md class-container'>
-			<div>
+			<div className='min-h-[250px]'>
 				<img
-					src={second}
+					src={img}
 					alt=''
 				/>
 			</div>
 			<div className='p-2'>
 				<h2 className='text-2xl classTitle relative duration-500 left-2 inline-block py-2'>
-					Ballet Dance Class
+					{name}
 				</h2>
-				<p className='pb-2'>
-					We denounce with righteous indignation and dislike mens
-					beguiled...
-                </p>
-                
-                <RightArrow />
-				
+				<div className='py-2 flex items-center justify-between'>
+					<p
+						className='flex items-center gap-2'
+						title='Instractor Name'
+					>
+						<BiUser /> {instructorName}
+					</p>
+
+					<p
+						className='flex items-center gap-2'
+						title='Instractor Email'
+					>
+						<GrMail /> {instructorEmail}
+					</p>
+				</div>
+
+				<div className='py-2 flex items-center justify-between'>
+					<p
+						className='flex items-center gap-2'
+						title='Available Sets'
+					>
+						<MdEventAvailable /> Available Seats: {availableSeats}
+					</p>
+
+					<p className='flex items-center gap-2'>
+						<ImPriceTags /> Cours Fee: {price || "00"}
+					</p>
+				</div>
+				<p className='pb-4 flex items-center gap-2'>
+					<AiOutlineUsergroupAdd /> Total Enrolled :{" "}
+					<span className={`text-green-500`}>{totalStudent}</span>
+				</p>
+				<RightArrow />
 			</div>
 		</div>
 	);

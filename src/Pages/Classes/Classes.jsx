@@ -6,23 +6,14 @@ import PageLoader from "../../Components/PageLoader/PageLoader";
 import useAuth from "../../hooks/useAuth";
 import { useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import useApprovedCasses from "../../hooks/useApprovedCasses";
 
 const Classes = () => {
     const { user, loading } = useAuth();
     const location = useLocation();
     const navigation = useNavigate();
 
-    // TODO: first fetch all data 
-    const {data: approvedClasses =[], isLoading, refetch} = useQuery({
-        queryKey: ['classes'],
-        queryFn: async () => {
-            const result = await axios(
-                `http://localhost:5000/approverd-classes`
-            );
-            
-            return result.data;
-        }
-    })
+	const { approvedClasses, isLoading, refetch } = useApprovedCasses();
 
     const handerAddClass = singleClass => {
         if (!user) {
