@@ -157,7 +157,7 @@ const ClassesCard = ({
 						<p className='pb-4 flex items-center gap-2'>
 							<AiOutlineUsergroupAdd /> Total Enrolled :{" "}
 							<span className={`text-green-500`}>
-								{totalStudent}
+								{totalStudent ? totalStudent : 0}
 							</span>
 						</p>
 					}
