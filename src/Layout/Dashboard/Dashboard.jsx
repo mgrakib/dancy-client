@@ -85,11 +85,7 @@ const Dashboard = () => {
 						<SiGoogleclassroom /> My Enrolled Classes
 					</li>
 				</Link>
-				<Link to='/dashboard/payment'>
-					<li className='text-gray-color  p-4 flex items-center gap-2 '>
-						<MdPayment /> Payment
-					</li>
-				</Link>
+			
 				<Link to='/dashboard/payment-history'>
 					<li className='text-gray-color  p-4 flex items-center gap-2 '>
 						<FaHistory /> Payment Histroy

@@ -110,15 +110,15 @@ const ClassesCard = ({
 					</p>
 				</div>
 				<div className='py-2 flex items-center justify-between'>
-					{availableSeats && (
+					{
 						<p
 							className='flex items-center gap-2'
 							title='Available Sets'
 						>
 							<MdEventAvailable /> Available Seats:{" "}
-							{availableSeats}
+							{availableSeats && availableSeats}
 						</p>
-					)}
+					}
 					<p className='flex items-center gap-2'>
 						<ImPriceTags /> Cours Fee: {price || "00"}
 					</p>

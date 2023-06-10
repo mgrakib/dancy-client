@@ -88,10 +88,7 @@ const router = createBrowserRouter([
 				path: "/dashboard/my-enrolled-classes",
 				element: <MyEnrolledClass />,
 			},
-			{
-				path: "/dashboard/payment",
-				element: <Payment />,
-			},
+			
 			{
 				path: "/dashboard/payment-history",
 				element: <PaymentHistory />,
