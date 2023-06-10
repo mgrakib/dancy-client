@@ -9,7 +9,7 @@ import DenyModal from '../Modal/DenyModal';
 import axios from 'axios';
 import useAuth from '../../hooks/useAuth';
 import useRole from '../../hooks/useRole';
-import { TbMessageDots } from "react-icons/tb";
+import { TbFidgetSpinner, TbMessageDots } from "react-icons/tb";
 import { AiOutlineUsergroupAdd } from "react-icons/ai";
 import useModal from '../../hooks/useModal';
 import DenyMessageShow from '../Modal/DenyMessageShow';
@@ -24,6 +24,7 @@ const ClassesCard = ({
 	isCart,
 	handelRemoveToCart,
 	handelPayment,
+	addToCartLoadin,
 }) => {
 	const {
 		_id,
@@ -152,14 +153,14 @@ const ClassesCard = ({
 						</p>
 					)}
 					{/* Total Enrolled */}
-					{totalStudent && (
+					{
 						<p className='pb-4 flex items-center gap-2'>
 							<AiOutlineUsergroupAdd /> Total Enrolled :{" "}
 							<span className={`text-green-500`}>
 								{totalStudent}
 							</span>
 						</p>
-					)}
+					}
 				</div>
 
 				{/* if admin then  show approved and deny btn  */}
@@ -203,7 +204,13 @@ const ClassesCard = ({
 						<div onClick={() => handerAddClass(singleClass)}>
 							<Button
 								bgColor={"bg-secondary-color"}
-								label={"Select"}
+								label={
+									!addToCartLoadin ? (
+										"Select"
+									) : (
+										<TbFidgetSpinner className='w-full animate-spin' />
+									)
+								}
 								isDisable={
 									availableSeats === 0 ||
 									role === "admin" ||

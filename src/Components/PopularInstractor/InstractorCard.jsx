@@ -65,7 +65,7 @@ const InstractorCard = ({ instractor }) => {
 							to={`/instractors-classes/${email}`}
 							className='flex items-center gap-3 justify-center'
 						>
-							See All Class { email}
+							See All Class
 							<RightArrow />
 						</Link>
 					</div>

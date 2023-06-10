@@ -8,17 +8,19 @@ import { useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useApprovedCasses from "../../hooks/useApprovedCasses";
 import { useState } from "react";
+import { toast } from "react-hot-toast";
 
 const Classes = () => {
     const { user, loading } = useAuth();
     const location = useLocation();
-    const navigation = useNavigate();
+    const navigate = useNavigate();
 
 
 	// TODO : change value second time 
 	const [dataLimite, setDataLimite] = useState(6);
 	const [sortData, setSortData] = useState(-1);
 	let { approvedClasses, refetch, isLoading } = useApprovedCasses();
+	const [addToCartLoadin, setAddToCartLoadin] = useState(false);
 	
 	const handelSortDataChange = e => {
 		setSortData(e.target.value);
@@ -34,7 +36,8 @@ const Classes = () => {
 
 
 	
-    const handerAddClass = singleClass => {
+	const handerAddClass = singleClass => {
+		setAddToCartLoadin(true)
         if (!user) {
            Swal.fire({
 				title: "Are you sure?",
@@ -46,7 +49,7 @@ const Classes = () => {
 				confirmButtonText: "Yes",
 			}).then(result => {
 				if (result.isConfirmed) {
-				return	navigation('/login')
+				return	navigate("/login", { state: { from: location } });
 				}
 			});
         } else {
@@ -74,9 +77,13 @@ const Classes = () => {
             axios
 				.post(`http://localhost:5000/class-add-to-cart`, classToCart)
 				.then(res => {
-                    if (res.data.message === 'already added') {
-                        alert('this class already added to cart')
-                    }
+					if (res.data.message === 'already added') {
+						
+						toast.error("This class already added.");
+                    }else{
+						toast.success("Add successfully!!!");
+					}
+					setAddToCartLoadin(false);
 				});
     
         }
@@ -130,6 +137,7 @@ const Classes = () => {
 							singleClass={singleClass}
 							isUser={true}
 							handerAddClass={handerAddClass}
+							addToCartLoadin={addToCartLoadin}
 						/>
 					))}
 				</div>

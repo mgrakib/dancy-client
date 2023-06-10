@@ -21,6 +21,7 @@ const AddAnClass = () => {
 		const formData = new FormData();
 		formData.append("image", classImage);
 
+		console.log(classImage)
 		axios
 			.post(
 				`https://api.imgbb.com/1/upload?key=${
@@ -30,7 +31,6 @@ const AddAnClass = () => {
 			)
 			.then(res => {
 				const img = res.data.data.display_url;
-
 				const {
 					name,
 					instructorName,

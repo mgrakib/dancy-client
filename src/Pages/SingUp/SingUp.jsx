@@ -1,6 +1,6 @@
 /** @format */
 
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
 import { FcGoogle } from "react-icons/fc";
@@ -13,6 +13,12 @@ import Swal from "sweetalert2";
 import { TbFidgetSpinner } from "react-icons/tb";
 
 const SignUp = () => {
+	
+	const navigate = useNavigate();
+	const location = useLocation();
+
+	const from = location.state?.from?.pathname || "/";
+
 	const { createUser, updateUserNamePhoto, user, loading, setLoading } =
 		useAuth();
 	const [error, setError] = useState('');
@@ -33,7 +39,7 @@ const SignUp = () => {
 		if (data.password !== data.confirmPassword) {
 			return setError(`Password didn't match`)
 		}
-		
+		// TODO: show invalid api to deploy imgbb 
 		axios
 			.post(
 				`https://api.imgbb.com/1/upload?key=${
@@ -63,6 +69,7 @@ const SignUp = () => {
 												showConfirmButton: false,
 												timer: 1500,
 											});
+											navigate(from, { replace: true });
 										});
 								})
 								.catch(err => setError(err.message));

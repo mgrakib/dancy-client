@@ -1,17 +1,24 @@
 /** @format */
 
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import SocialLogin from "../../Components/SocialLogin/SocialLogin";
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
 import { useState } from "react";
 import { TbFidgetSpinner } from "react-icons/tb";
 import { BsEye, BsEyeSlash } from "react-icons/bs";
+import Swal from "sweetalert2";
 
 const Login = () => {
-	const { userLogin,loading,  setLoading } = useAuth();
+	const { userLogin, loading, setLoading } = useAuth();
 	const [error, setError] = useState("");
 	const [showPassword, setShowPassword] = useState(false);
+
+	const navigate = useNavigate();
+	const location = useLocation();
+
+	const from = location.state?.from?.pathname || "/";
+
 	const {
 		register,
 		handleSubmit,
@@ -19,25 +26,24 @@ const Login = () => {
 		formState: { errors },
 	} = useForm();
 	const onSubmit = data => {
-		
-		setError('');
-		userLogin(data.email, data.password).then(() => {
+		setError("");
+		userLogin(data.email, data.password)
+			.then(() => {
+				
+				Swal.fire({
+					position: "top-end",
+					icon: "success",
+					title: "Successfully Login",
+					showConfirmButton: false,
+					timer: 1500,
+				});
 
-			// axios.post(`http://localhost:5000/users`, data.email).then(res => {
-			// 	// TODO: navigate home
-			// 	Swal.fire({
-			// 		position: "top-end",
-			// 		icon: "success",
-			// 		title: "Successfully Login",
-			// 		showConfirmButton: false,
-			// 		timer: 1500,
-			// 	});
-			// })
-			
-		}).catch((err) => {
-			setLoading(false);
-			setError(err.message)
-		});
+				navigate(from, { replace: true });
+			})
+			.catch(err => {
+				setLoading(false);
+				setError(err.message);
+			});
 	};
 
 	return (
@@ -105,7 +111,12 @@ const Login = () => {
 									placeholder='*******'
 									className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-[#63AC45] bg-gray-200 text-gray-900'
 								/>
-								<div onClick={() => setShowPassword(!showPassword)} className='absolute right-2 top-1/2 -translate-y-1/2 cursor-pointer'>
+								<div
+									onClick={() =>
+										setShowPassword(!showPassword)
+									}
+									className='absolute right-2 top-1/2 -translate-y-1/2 cursor-pointer'
+								>
 									{!showPassword ? <BsEyeSlash /> : <BsEye />}
 								</div>
 							</div>
