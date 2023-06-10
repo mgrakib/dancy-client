@@ -7,6 +7,7 @@ import ClassesCard from "../../Components/ClassesCard/ClassesCard";
 import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
+import { toast } from "react-hot-toast";
 
 const InstractorClasses = () => {
 	const classes = useLoaderData();
@@ -55,7 +56,9 @@ const InstractorClasses = () => {
 				.post(`http://localhost:5000/class-add-to-cart`, classToCart)
 				.then(res => {
 					if (res.data.message === "already added") {
-						alert("this class already added to cart");
+						toast.error("This class already added its not tost.");
+					} else {
+						toast.success("Add successfully!!!");
 					}
 				});
 		}

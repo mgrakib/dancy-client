@@ -79,7 +79,7 @@ const Classes = () => {
 				.then(res => {
 					if (res.data.message === 'already added') {
 						
-						toast.error("This class already added.");
+						toast.error("This class already added its not tost.");
                     }else{
 						toast.success("Add successfully!!!");
 					}

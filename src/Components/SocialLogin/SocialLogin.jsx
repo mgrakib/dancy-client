@@ -4,8 +4,14 @@ import { FcGoogle } from "react-icons/fc";
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { useLocation, useNavigate } from "react-router-dom";
 const SocialLogin = () => {
 	const { googleLogin, setLoading } = useAuth();
+	const navigate = useNavigate();
+	const location = useLocation();
+
+	const from = location.state?.from?.pathname || "/";
+
 	const handelGoogleSingIn = () => {
 		googleLogin()
 			.then(async res => {
@@ -26,6 +32,8 @@ const SocialLogin = () => {
 							showConfirmButton: false,
 							timer: 1500,
 						});
+
+						navigate(from, { replace: true });
 					});
 			})
 			.catch(err => {

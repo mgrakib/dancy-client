@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import useAuth from "../../../hooks/useAuth";
 import axios from "axios";
 import useCartClass from "../../../hooks/useCartClass";
+import { toast } from "react-hot-toast";
 
 const CheckoutForm = ({ price, targetClass, closeModal }) => {
 	const { user } = useAuth();
@@ -74,7 +75,7 @@ const CheckoutForm = ({ price, targetClass, closeModal }) => {
 			console.log(conformError);
 		}
 
-		setProcessing(false);
+		
 		if (paymentIntent.status === "succeeded") {
 			setTransactionID(paymentIntent.id);
 			const payment = {
@@ -91,9 +92,11 @@ const CheckoutForm = ({ price, targetClass, closeModal }) => {
 			};
 
 			axios.post("http://localhost:5000/payments", payment).then(res => {
+				closeModal();
+				toast.success("Payment Successfully");
 				console.log(res.data)
 				refetch();
-				closeModal();
+				setProcessing(false);
 			});
 		}
 	};
@@ -137,6 +140,8 @@ const CheckoutForm = ({ price, targetClass, closeModal }) => {
 							{transactionID}
 						</small>
 					</p>
+
+					
 				)}
 			</div>
 		</div>

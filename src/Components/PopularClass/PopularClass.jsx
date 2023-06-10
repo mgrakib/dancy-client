@@ -36,6 +36,8 @@ const PopularClass = () => {
 					subTitle={"OUR POPULAR CLASS"}
 					isCenter={true}
 				/>
+
+				
 				<div className='flex items-center justify-between md:justify-start gap-3'>
 					<div>
 						<select

@@ -215,13 +215,7 @@ const ClassesCard = ({
 						<div onClick={() => handerAddClass(singleClass)}>
 							<Button
 								bgColor={"bg-secondary-color"}
-								label={
-									!addToCartLoadin ? (
-										"Select"
-									) : (
-										<TbFidgetSpinner className='w-full animate-spin' />
-									)
-								}
+								label={"Select"}
 								isDisable={
 									availableSeats === 0 ||
 									role === "admin" ||

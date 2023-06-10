@@ -24,7 +24,7 @@ const InstractorCard = ({ instractor }) => {
 			<div className='relative shadow-xl w-2/3 mx-auto bg-white p-4 -top-5 text-center'>
 				<h3 className='text-2xl font-bold'>{name}</h3>
 
-				<div className='py-2 max-h-0 overflow-hidden group-hover:max-h-[200px] duration-500'>
+				<div className='py-2 max-h-0 overflow-hidden group-hover:max-h-[600px] duration-700'>
 					<div>
 						<p>
 							Total Class Taken :{" "}

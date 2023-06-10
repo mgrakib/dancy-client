@@ -38,6 +38,7 @@ const ManageUsers = () => {
 // experience
 // 5
 
+	// TODO: reomove instructor when is admin
 
 	return (
 		<div className=''>
