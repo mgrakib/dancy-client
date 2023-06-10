@@ -86,7 +86,8 @@ const CheckoutForm = ({ price, targetClass, closeModal }) => {
 				quantity: 1,
 				cartClassesId: targetClass._id,
 				classId: targetClass.classId,
-				cartClassName: targetClass.name
+				cartClassName: targetClass.name,
+				instructorEmail: targetClass.instructorEmail,
 			};
 
 			axios.post("http://localhost:5000/payments", payment).then(res => {

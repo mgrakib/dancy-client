@@ -6,7 +6,8 @@ import { HiMail } from "react-icons/hi";
 import { FaUsers } from 'react-icons/fa';
 // import { FaUsersBetweenLines } from "react-icons/fa";
 const InstractorCard = ({ instractor }) => {
-	const { name, className, experience, userImg, email } = instractor;
+	const { name, className, totalEnrolledStudent, userImg, email } =
+		instractor;
 	return (
 		<div className='relative group my-auto'>
 			<div className=' flex items-center justify-center'>
@@ -35,7 +36,11 @@ const InstractorCard = ({ instractor }) => {
 						</p>
 						<p className='flex items-center gap-2'>
 							{" "}
-							<FaUsers /> {experience ? experience : 0} students
+							<FaUsers />{" "}
+							{totalEnrolledStudent
+								? totalEnrolledStudent
+								: 0}{" "}
+							students
 						</p>
 					</div>
 				</div>
