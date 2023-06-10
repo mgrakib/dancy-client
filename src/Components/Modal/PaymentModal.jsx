@@ -62,6 +62,7 @@ const PaymentModal = ({ isOpen, closeModal, targetClass }) => {
 											<CheckoutForm
 												price={targetClass?.price}
 												targetClass={targetClass}
+												closeModal={closeModal}
 											/>
 										</Elements>
 									</div>

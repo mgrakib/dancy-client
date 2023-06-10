@@ -4,7 +4,7 @@ import useAuth from "../../../hooks/useAuth";
 import axios from "axios";
 import useCartClass from "../../../hooks/useCartClass";
 
-const CheckoutForm = ({ price, targetClass }) => {
+const CheckoutForm = ({ price, targetClass, closeModal }) => {
 	const { user } = useAuth();
 	const { refetch } = useCartClass();
 	const stripe = useStripe();
@@ -90,7 +90,9 @@ const CheckoutForm = ({ price, targetClass }) => {
 			};
 
 			axios.post("http://localhost:5000/payments", payment).then(res => {
+				console.log(res.data)
 				refetch();
+				closeModal();
 			});
 		}
 	};
