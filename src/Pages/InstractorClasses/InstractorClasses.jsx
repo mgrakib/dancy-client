@@ -53,7 +53,7 @@ const InstractorClasses = () => {
 			};
 
 			axios
-				.post(`http://localhost:5000/class-add-to-cart`, classToCart)
+				.post(`https://twelve-assignment-server-mgrakib.vercel.app/class-add-to-cart`, classToCart)
 				.then(res => {
 					if (res.data.message === "already added") {
 						toast.error("This class already added its not tost.");

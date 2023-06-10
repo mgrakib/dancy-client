@@ -18,7 +18,7 @@ const SocialLogin = () => {
 
 				console.log(res)
 				await axios
-					.post(`http://localhost:5000/users`, {
+					.post(`https://twelve-assignment-server-mgrakib.vercel.app/users`, {
 						email: res?.user?.email,
 						userImg: res?.user?.photoURL,
 						name: res?.user?.displayName

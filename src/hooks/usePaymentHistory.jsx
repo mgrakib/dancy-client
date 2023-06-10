@@ -8,7 +8,7 @@ const usePaymentHistory = () => {
     const {data: paymentHistory =[], isLoading, refetch } = useQuery({
         queryKey: ['payment-history'],
         queryFn: async () => {
-            const result = await axios(`http://localhost:5000/payment-history/?email=${user?.email}`);
+            const result = await axios(`https://twelve-assignment-server-mgrakib.vercel.app/payment-history/?email=${user?.email}`);
 
             return result.data;
         }

@@ -41,7 +41,7 @@ const router = createBrowserRouter([
 			{
 				path: "/instractors-classes/:email",
 				element: <InstractorClasses />,
-				loader: ({params}) => fetch(`http://localhost:5000/get-instructor-classes/${params.email}`),
+				loader: ({params}) => fetch(`https://twelve-assignment-server-mgrakib.vercel.app/get-instructor-classes/${params.email}`),
 			},
 			{
 				path: "/login",

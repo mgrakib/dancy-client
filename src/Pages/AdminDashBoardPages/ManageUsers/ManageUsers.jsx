@@ -11,9 +11,9 @@ const ManageUsers = () => {
 	const handelRoleChange = async (role, user) => {
 		const roleStatus = { role, email: user?.email };
 		const result = await axios
-			.put("http://localhost:5000/update-user-role", roleStatus)
+			.put("https://twelve-assignment-server-mgrakib.vercel.app/update-user-role", roleStatus)
 			.then(res => {
-				axios.post(`http://localhost:5000/make-instructor/${user?.email}`).then(result => {
+				axios.post(`https://twelve-assignment-server-mgrakib.vercel.app/make-instructor/${user?.email}`).then(result => {
 					console.log(result.data)
 					refetch();
 				})

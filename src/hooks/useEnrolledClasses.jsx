@@ -8,7 +8,7 @@ const useEnrolledClasses = () => {
         queryKey: ['enrolled classes'],
         queryFn: async () => {
             const result = await axios(
-				`http://localhost:5000/enrolled-classes/?email=${user?.email}`
+				`https://twelve-assignment-server-mgrakib.vercel.app/enrolled-classes/?email=${user?.email}`
 			);
 
             return result.data;
