@@ -18,6 +18,7 @@ import Payment from "../Pages/StudentDashBoardPages/Payment/Payment";
 import PaymentHistory from "../Pages/StudentDashBoardPages/PaymentHistory/PaymentHistory";
 import Classes from "../Pages/Classes/Classes";
 import Instructors from "../Pages/Instructors/Instructors";
+import InstractorClasses from "../Pages/InstractorClasses/InstractorClasses";
 
 const router = createBrowserRouter([
 	{
@@ -36,6 +37,11 @@ const router = createBrowserRouter([
 			{
 				path: "/classes",
 				element: <Classes />,
+			},
+			{
+				path: "/instractors-classes/:email",
+				element: <InstractorClasses />,
+				loader: ({params}) => fetch(`http://localhost:5000/get-instructor-classes/${params.email}`),
 			},
 			{
 				path: "/login",

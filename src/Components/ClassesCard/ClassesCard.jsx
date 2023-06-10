@@ -109,13 +109,15 @@ const ClassesCard = ({
 					</p>
 				</div>
 				<div className='py-2 flex items-center justify-between'>
-					<p
-						className='flex items-center gap-2'
-						title='Available Sets'
-					>
-						<MdEventAvailable /> Available Seats: {availableSeats}
-					</p>
-
+					{availableSeats && (
+						<p
+							className='flex items-center gap-2'
+							title='Available Sets'
+						>
+							<MdEventAvailable /> Available Seats:{" "}
+							{availableSeats}
+						</p>
+					)}
 					<p className='flex items-center gap-2'>
 						<ImPriceTags /> Cours Fee: {price || "00"}
 					</p>
@@ -150,10 +152,14 @@ const ClassesCard = ({
 						</p>
 					)}
 					{/* Total Enrolled */}
-					<p className='pb-4 flex items-center gap-2'>
-						<AiOutlineUsergroupAdd /> Total Enrolled :{" "}
-						<span className={`text-green-500`}>{totalStudent}</span>
-					</p>
+					{totalStudent && (
+						<p className='pb-4 flex items-center gap-2'>
+							<AiOutlineUsergroupAdd /> Total Enrolled :{" "}
+							<span className={`text-green-500`}>
+								{totalStudent}
+							</span>
+						</p>
+					)}
 				</div>
 
 				{/* if admin then  show approved and deny btn  */}
