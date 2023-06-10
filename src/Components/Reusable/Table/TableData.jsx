@@ -1,3 +1,4 @@
+/** @format */
 
 const TableData = ({ users: data, handelRoleChange }) => {
 	return (
@@ -23,50 +24,32 @@ const TableData = ({ users: data, handelRoleChange }) => {
 								<td>{item?.role || "Student"}</td>
 								<td className=' flex items-center justify-center gap-2'>
 									{/* TODO: disable btn not invisibal */}
-									{!item.role ? (
-										<>
-											<button
-												onClick={() =>
-													handelRoleChange(
-														"admin",
-														item
-													)
-												}
-												className='bg-green-200 px-3 py-1 rounded-md'
-											>
-												Admin
-											</button>
-											<button
-												onClick={() =>
-													handelRoleChange(
-														"instractor",
-														item
-													)
-												}
-												className='bg-rose-200 px-3 py-1 rounded-md'
-											>
-												Instractor
-											</button>
-										</>
-									) : (
-										<>
-											{item.role === "instractor" ? (
-												<button
-													onClick={() =>
-														handelRoleChange(
-															"admin",
-															item
-														)
-													}
-													className='bg-green-200 px-3 py-1 rounded-md'
-												>
-													Admin
-												</button>
-											) : (
-												<>admin</>
-											)}
-										</>
-									)}
+									<button
+										onClick={() =>
+											handelRoleChange("admin", item)
+										}
+										className={`${
+											item?.role === "admin"
+												? "bg-rose-200"
+												: "bg-green-200"
+										} px-3 py-1 rounded-md`}
+										disabled={item?.role === "admin"}
+									>
+										Admin
+									</button>
+									<button
+										onClick={() =>
+											handelRoleChange("instractor", item)
+										}
+										className={`${
+											item?.role === "instractor"
+												? "bg-rose-200"
+												: "bg-green-200"
+										} px-3 py-1 rounded-md`}
+										disabled={item?.role === "instractor"}
+									>
+										Instractor
+									</button>
 								</td>
 							</tr>
 						))}

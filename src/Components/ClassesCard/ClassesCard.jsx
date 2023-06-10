@@ -1,18 +1,21 @@
-import './ClassesCard.css'
+/** @format */
+
+import "./ClassesCard.css";
 import { BiUser } from "react-icons/bi";
 import { GrMail } from "react-icons/gr";
 import { MdEventAvailable } from "react-icons/md";
 import { ImPriceTags } from "react-icons/im";
-import Button from '../Button/Button';
-import { useState } from 'react';
-import DenyModal from '../Modal/DenyModal';
-import axios from 'axios';
-import useAuth from '../../hooks/useAuth';
-import useRole from '../../hooks/useRole';
+import Button from "../Button/Button";
+import { useState } from "react";
+import DenyModal from "../Modal/DenyModal";
+import axios from "axios";
+import useAuth from "../../hooks/useAuth";
+import useRole from "../../hooks/useRole";
 import { TbFidgetSpinner, TbMessageDots } from "react-icons/tb";
 import { AiOutlineUsergroupAdd } from "react-icons/ai";
-import useModal from '../../hooks/useModal';
-import DenyMessageShow from '../Modal/DenyMessageShow';
+import useModal from "../../hooks/useModal";
+import DenyMessageShow from "../Modal/DenyMessageShow";
+import { toast } from "react-hot-toast";
 
 const ClassesCard = ({
 	singleClass,
@@ -73,6 +76,8 @@ const ClassesCard = ({
 							console.log(res.data);
 						});
 				}
+
+				toast.success("Successfully Update!!");
 				refetch();
 			});
 	};
@@ -172,6 +177,9 @@ const ClassesCard = ({
 							<Button
 								bgColor={"bg-green-500"}
 								label={"Approve"}
+								isDisable={
+									status === "approved" || status === "deny"
+								}
 							/>
 						</div>
 
@@ -182,6 +190,9 @@ const ClassesCard = ({
 							<Button
 								bgColor={"bg-secondary-color"}
 								label={"Deny"}
+								isDisable={
+									status === "approved" || status === "deny"
+								}
 							/>
 						</div>
 					</div>
