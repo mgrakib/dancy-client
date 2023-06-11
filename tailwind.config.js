@@ -15,6 +15,7 @@ export default {
 				"dark-secondary-colro": "var(--dark-secondary-color)",
 				"dark-common-color": "var(--dark-common-color)",
 				"dark-dashboard-color": "var(--dark-dashboard-color)",
+				"dark-gray-color": "var(--dark-gray-color)",
 			},
 		},
 	},

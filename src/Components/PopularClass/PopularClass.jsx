@@ -8,6 +8,11 @@ import Card from "../Card/Card";
 import useClass from "../../hooks/useClass";
 import useApprovedCasses from "../../hooks/useApprovedCasses";
 import { useState } from "react";
+
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
+import LoadingSkeleton from "../LoadingModal/LoadingSkeleton";
+
 const PopularClass = () => {
 
 	const [dataLimite, setDataLimite] = useState(6)
@@ -37,7 +42,6 @@ const PopularClass = () => {
 					isCenter={true}
 				/>
 
-				
 				<div className='flex items-center justify-between md:justify-start gap-3'>
 					<div>
 						<select
@@ -67,6 +71,8 @@ const PopularClass = () => {
 						</select>
 					</div>
 				</div>
+
+				{isLoading && <LoadingSkeleton cards={6} />}
 
 				<div className='grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8'>
 					{approvedClasses.map(singleClass => (

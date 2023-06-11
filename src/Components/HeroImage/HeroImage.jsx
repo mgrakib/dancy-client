@@ -21,7 +21,6 @@ const HeroImage = () => {
 							data-aos-easing='linear'
 							
 						>
-							{/* TODO:Z-index problem, with mobile nav  */}
 							{/* TODO: SHOW NO DATA MESSAGE when data not available and show loadin img when img loading  */}
 							<div className="">
 								<h2 className='text-primary-color  text-[100px] md:text-[167px] md:font-bold leading-[150px]  relative dance-text inline-block z-10'>

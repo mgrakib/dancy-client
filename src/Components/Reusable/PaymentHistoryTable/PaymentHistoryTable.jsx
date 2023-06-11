@@ -7,9 +7,9 @@ const PaymentHistoryTable = ( {paymentHistory} ) => {
 	return (
 		<div>
 			<div className='overflow-x-auto'>
-				<table className='table table-zebra'>
+				<table className='table dark:bg-dashboard-color dark:rounded-sm dark:text-dark-gray-color'>
 					{/* head */}
-					<thead>
+					<thead className='dark:text-dark-gray-color'>
 						<tr>
 							<th>#</th>
 
@@ -28,7 +28,11 @@ const PaymentHistoryTable = ( {paymentHistory} ) => {
 
 								<td>{item?.cartClassName}</td>
 								<td>{item?.transactionID}</td>
-								<td>{moment().format(new Date(item?.date).toLocaleString())}</td>
+								<td>
+									{moment().format(
+										new Date(item?.date).toLocaleString()
+									)}
+								</td>
 								{/* <td>{new Date(item?.date).toLocaleDateString()}</td> */}
 								<td>{item?.price}</td>
 								<td>{item?.email}</td>

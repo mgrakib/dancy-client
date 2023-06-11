@@ -49,7 +49,7 @@ const ManageUsers = () => {
 				isCenter={true}
 			/>
 
-			<div className=' overflow-x-auto min-w-[70vw]'>
+			<div className=' overflow-x-auto min-w-[70vw] px-5'>
 				<TableData
 					users={users}
 					handelRoleChange={handelRoleChange}

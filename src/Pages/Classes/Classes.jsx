@@ -10,6 +10,7 @@ import useApprovedCasses from "../../hooks/useApprovedCasses";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { Helmet } from "react-helmet-async";
+import LoadingSkeleton from "../../Components/LoadingModal/LoadingSkeleton";
 
 const Classes = () => {
     const { user, loading } = useAuth();
@@ -92,13 +93,7 @@ const Classes = () => {
 
 
 
-    if (isLoading) {
-        return (
-			<div className="w-full h-[80vh]">
-				<PageLoader />
-			</div>
-		);
-    }
+    
     return (
 		<div className='pt-4 md:pt-16 dark:bg-dark-primary-colro'>
 			<Helmet>
@@ -134,6 +129,11 @@ const Classes = () => {
 						</select>
 					</div>
 				</div>
+
+				{
+					isLoading && <LoadingSkeleton cards={6}/>
+				}
+
 				<div className='grid grid-cols-1 md:grid-cols-3 md:gap-10 gap-2 '>
 					{approvedClasses.map(singleClass => (
 						<ClassesCard

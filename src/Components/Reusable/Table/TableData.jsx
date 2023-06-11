@@ -4,9 +4,9 @@ const TableData = ({ users: data, handelRoleChange }) => {
 	return (
 		<div>
 			<div className='overflow-x-auto'>
-				<table className='table table-zebra'>
+				<table className='table dark:bg-dashboard-color dark:rounded-sm dark:text-dark-gray-color'>
 					{/* head */}
-					<thead>
+					<thead className="dark:text-dark-gray-color">
 						<tr>
 							<th>#</th>
 
