@@ -1,5 +1,6 @@
 
 import { Link } from 'react-router-dom';
+import logo_Light from "../../../assets/logo.png"; 
 import logo_dark from "../../../assets/logo_Dark.png"; 
 import Container from '../../Container/Container';
 import './NavBar.css'
@@ -8,12 +9,14 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { useState } from 'react';
 import AOS from "aos";
 import "aos/dist/aos.css"; // You can also use <link> for styles
+import useLogo from '../../../hooks/useLogo';
 // ..
 AOS.init();
 
 const NavBar = () => {
 	const { user, logOut } = useAuth();
 	const [isOpen, setIsOpen] = useState(false);
+	const {isDarkLogo, setIsDarkLogo} = useLogo();
 
 	const handelLogOut = () => {
 		logOut()
@@ -83,13 +86,13 @@ const NavBar = () => {
 			data-aos-duration='10000'
 			data-aos-easing='linear'
 		>
-			<div className='bg-[#FFFFFF] shadow-lg'>
+			<div className='bg-[#FFFFFF] dark:bg-dark-primary-colro shadow-lg dark:text-dark-secondary-colro'>
 				<Container>
 					<div className='flex items-center justify-between relative'>
 						<Link to={"/"}>
 							<div className='w-[70px]'>
 								<img
-									src={logo_dark}
+									src={ isDarkLogo ? logo_dark : logo_Light }
 									alt=''
 								/>
 							</div>
@@ -107,7 +110,9 @@ const NavBar = () => {
 						</div>
 						{isOpen && (
 							<div className=' absolute right-0 top-10 text-primary-color rounded-md w-1/2 overflow-hidden responisv-nav z-50'>
-								<ul className='flex flex-col bg-red-400 z-50 '>{navItesm}</ul>
+								<ul className='flex flex-col bg-red-400 z-50 '>
+									{navItesm}
+								</ul>
 							</div>
 						)}
 					</div>

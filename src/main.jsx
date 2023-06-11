@@ -11,6 +11,7 @@ import {
 	QueryClient,
 	QueryClientProvider,
 } from "react-query";
+import { HelmetProvider } from "react-helmet-async";
 
 
 // Create a client
@@ -19,10 +20,12 @@ const queryClient = new QueryClient();
 ReactDOM.createRoot(document.getElementById("root")).render(
 	<React.StrictMode>
 		<QueryClientProvider client={queryClient}>
-			<AuthProvider>
-				<RouterProvider router={router} />
-				<Toaster />
-			</AuthProvider>
+			<HelmetProvider>
+				<AuthProvider>
+					<RouterProvider router={router} />
+					<Toaster />
+				</AuthProvider>
+			</HelmetProvider>
 		</QueryClientProvider>
 	</React.StrictMode>
 );

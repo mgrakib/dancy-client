@@ -19,7 +19,7 @@ const SectionTitle = ({title, subTitle, details, isCenter}) => {
 				data-aos='fade-right'
 				data-aos-duration='1000'
 			>
-				<h2 className='text-common-color text-3xl font-bold uppercase'>
+				<h2 className='text-common-color dark:text-white text-3xl font-bold uppercase'>
 					{title}
 				</h2>
 			</div>

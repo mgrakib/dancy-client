@@ -72,16 +72,23 @@ const InstractorClasses = () => {
 					isCenter={true}
 				/>
 
-				<div className='grid grid-cols-1 md:grid-cols-3 md:gap-10 gap-2 '>
-					{classes.map(singleClass => (
-						<ClassesCard
-							key={singleClass._id}
-							singleClass={singleClass}
-							isUser={true}
-							handerAddClass={handerAddClass}
-						/>
-					))}
-				</div>
+				{classes.length > 1 ? (
+					<div className='grid grid-cols-1 md:grid-cols-3 md:gap-10 gap-2 '>
+						{classes.map(singleClass => (
+							<ClassesCard
+								key={singleClass._id}
+								singleClass={singleClass}
+								isUser={true}
+								handerAddClass={handerAddClass}
+							/>
+						))}
+					</div>
+				) : (
+					<div className='w-full text-center py-5 rounded-md bg-red-50'>
+						<h2 className='text-3xl '>No Class avaiable</h2>
+
+					</div>
+				)}
 			</Container>
 		</div>
 	);
