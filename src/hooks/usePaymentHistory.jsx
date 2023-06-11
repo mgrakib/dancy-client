@@ -2,13 +2,18 @@ import axios from 'axios';
 import React from 'react';
 import { useQuery } from 'react-query';
 import useAuth from './useAuth';
+import useAxiosSecure from './useAxiosSecure';
 
 const usePaymentHistory = () => {
-    const {user } = useAuth();
+    const [axiosSEcure] = useAxiosSecure();
+
+    const {user, loading } = useAuth();
     const {data: paymentHistory =[], isLoading, refetch } = useQuery({
         queryKey: ['payment-history'],
+        enabled: !loading,
         queryFn: async () => {
-            const result = await axios(`https://twelve-assignment-server-mgrakib.vercel.app/payment-history/?email=${user?.email}`);
+            const result = await axiosSEcure(
+				`payment-history/?email=${user?.email}`);
 
             return result.data;
         }

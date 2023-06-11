@@ -107,7 +107,7 @@ const NavBar = () => {
 						</div>
 						{isOpen && (
 							<div className=' absolute right-0 top-10 text-primary-color rounded-md w-1/2 overflow-hidden responisv-nav z-50'>
-								<ul className='flex flex-col '>{navItesm}</ul>
+								<ul className='flex flex-col bg-red-400 z-50 '>{navItesm}</ul>
 							</div>
 						)}
 					</div>

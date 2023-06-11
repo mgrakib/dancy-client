@@ -3,12 +3,13 @@ import { useQuery } from "react-query";
 import useAuth from "./useAuth";
 
 const useEnrolledClasses = () => {
-    const { user } = useAuth();
+    const { user, loading } = useAuth();
     const {data: myEnrolledClasses= [], refetch, isLoading } = useQuery({
         queryKey: ['enrolled classes'],
+        enabled: !loading,
         queryFn: async () => {
             const result = await axios(
-				`https://twelve-assignment-server-mgrakib.vercel.app/enrolled-classes/?email=${user?.email}`
+				`http://localhost:5000/enrolled-classes/?email=${user?.email}`, {headers: {Authorization: `Bearer ${localStorage.getItem('access-token')}`}}
 			);
 
             return result.data;

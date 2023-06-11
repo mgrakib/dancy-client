@@ -10,7 +10,7 @@ const useInstracture = (numerOfData, sort) => {
 		queryKey: ["instracture"],
 		queryFn: async () => {
 			const result = await axios(
-				`https://twelve-assignment-server-mgrakib.vercel.app/instructor/?numberOfData=${numerOfData}&sort=${sort}`
+				`http://localhost:5000/instructor/?numberOfData=${numerOfData}&sort=${sort}`
 			);
 			return result.data;
 		},

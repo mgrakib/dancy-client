@@ -18,7 +18,7 @@ const CheckoutForm = ({ price, targetClass, closeModal }) => {
 	useEffect(() => {
 		if (price > 0) {
 			// Create PaymentIntent as soon as the page loads
-			fetch("https://twelve-assignment-server-mgrakib.vercel.app/create-payment-intent", {
+			fetch("http://localhost:5000/create-payment-intent", {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify({ price }),
@@ -91,7 +91,7 @@ const CheckoutForm = ({ price, targetClass, closeModal }) => {
 				instructorEmail: targetClass.instructorEmail,
 			};
 
-			axios.post("https://twelve-assignment-server-mgrakib.vercel.app/payments", payment).then(res => {
+			axios.post("http://localhost:5000/payments", payment).then(res => {
 				closeModal();
 				toast.success("Payment Successfully");
 				console.log(res.data)

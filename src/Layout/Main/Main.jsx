@@ -3,11 +3,13 @@ import NavBar from "../../Components/Share/NavBar/NavBar";
 import Footer from "../../Components/Share/Footer/Footer";
 
 const Main = () => (
-    <div>
-        <NavBar />
-        <Outlet />
-        <Footer />
-    </div>
+	<div>
+		<div className="z-50">
+			<NavBar />
+		</div>
+		<Outlet />
+		<Footer />
+	</div>
 );
 
 export default Main;

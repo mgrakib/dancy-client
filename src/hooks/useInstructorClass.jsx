@@ -11,7 +11,7 @@ const useInstructorClass = () => {
         enabled: !loading,
         queryFn: async () => {
             const result = await axios(
-				`https://twelve-assignment-server-mgrakib.vercel.app/instructor-classes/?email=${user?.email}`
+				`http://localhost:5000/instructor-classes/?email=${user?.email}`, {headers: {Authorization: `Bearer ${localStorage.getItem('access-token')}`}}
 			);
             
             return result.data;

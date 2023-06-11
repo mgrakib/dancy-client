@@ -14,6 +14,7 @@ import {
 } from "firebase/auth";
 
 import { app } from "../Firebase/Firebase.confg";
+import axios from "axios";
 
 export const AuthContext = createContext({});
 const auth = getAuth(app);
@@ -58,11 +59,21 @@ const AuthProvider = ({ children }) => {
 		const unsubscribe = onAuthStateChanged(auth, currentUser => {
 			setUser(currentUser);
 			setLoading(false);
+			if (currentUser) {
+				const loogedUser = {email: currentUser?.email}
+				axios.post("http://localhost:5000/jwt", loogedUser).then(result => {
+					localStorage.setItem('access-token', result.data.token)
+				})
+			} else {
+				localStorage.removeItem('access-token')
+			}
+			
+			
 			// if (currentUser) {
 			// 	const loogedUser = { email: currentUser.email };
 			// setLoading(false);
 			// 	axios
-			// 		.post(`https://twelve-assignment-server-mgrakib.vercel.app/jwt`, loogedUser)
+			// 		.post(`http://localhost:5000/jwt`, loogedUser)
 			// 		.then(
 			// 			res =>
 			// 				localStorage.setItem(

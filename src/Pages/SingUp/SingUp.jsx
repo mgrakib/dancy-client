@@ -57,7 +57,7 @@ const SignUp = () => {
 								.then(async () => {
 									await axios
 										.post(
-											`https://twelve-assignment-server-mgrakib.vercel.app/users`,
+											`http://localhost:5000/users`,
 											{email: data.email, userImg: imgURL, name: data.name}
 										)
 										.then(res => {

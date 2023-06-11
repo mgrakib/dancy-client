@@ -10,7 +10,7 @@ const useUser = () => {
 		} = useQuery({
 			queryKey: ["user"],
 			queryFn: async () => {
-                const res = await axios("https://twelve-assignment-server-mgrakib.vercel.app/get-all-user"); 
+                const res = await axios("http://localhost:5000/get-all-user"); 
                 
 				return res.data;
 			},

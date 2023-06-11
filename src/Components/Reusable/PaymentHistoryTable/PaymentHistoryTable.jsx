@@ -4,8 +4,6 @@ import moment from "moment/moment";
 
 const PaymentHistoryTable = ( {paymentHistory} ) => {
 
-
-    console.log(paymentHistory);
 	return (
 		<div>
 			<div className='overflow-x-auto'>

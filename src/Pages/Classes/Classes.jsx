@@ -75,7 +75,7 @@ const Classes = () => {
 			};
             
             axios
-				.post(`https://twelve-assignment-server-mgrakib.vercel.app/class-add-to-cart`, classToCart)
+				.post(`http://localhost:5000/class-add-to-cart`, classToCart)
 				.then(res => {
 					if (res.data.message === 'already added') {
 						

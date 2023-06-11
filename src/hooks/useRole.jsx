@@ -13,7 +13,7 @@ const useRole = () => {
 		enabled: !loading,
 		queryFn: async () => {
 			const result = await axios(
-				`https://twelve-assignment-server-mgrakib.vercel.app/user-role/?email=${user?.email}`
+				`http://localhost:5000/user-role/?email=${user?.email}`
 			);
 			return result.data;
 		},

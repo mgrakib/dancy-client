@@ -64,11 +64,11 @@ const ClassesCard = ({
 	const handelChangeStatus = async (statusValue, id, feedBack) => {
 		const status = { status: statusValue, id: id, feedBack };
 		const result = await axios
-			.put(`https://twelve-assignment-server-mgrakib.vercel.app/update-class-status`, status)
+			.put(`http://localhost:5000/update-class-status`, status)
 			.then(res => {
 				if (statusValue === "approved") {
 					axios
-						.put(`https://twelve-assignment-server-mgrakib.vercel.app/update-instructor-info`, {
+						.put(`http://localhost:5000/update-instructor-info`, {
 							name,
 							email: instructorEmail,
 						})
