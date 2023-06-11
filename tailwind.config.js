@@ -13,6 +13,8 @@ export default {
 				"dashboard-color": "var(--dashboard-color)",
 				"dark-primary-colro": "var(--dark-primary-color)",
 				"dark-secondary-colro": "var(--dark-secondary-color)",
+				"dark-common-color": "var(--dark-common-color)",
+				"dark-dashboard-color": "var(--dark-dashboard-color)",
 			},
 		},
 	},

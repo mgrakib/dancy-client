@@ -67,7 +67,7 @@ const AddAnClass = () => {
 			.catch(err => setProcess(false));
 	};
 	return (
-		<div>
+		<div className=''>
 			<DashboardContainer>
 				<div className='text-center'>
 					<SectionTitle title={"Add An Class"} />
@@ -75,7 +75,7 @@ const AddAnClass = () => {
 
 				<div>
 					<form onSubmit={handleSubmit(onSubmit)}>
-						<div className='grid grid-cols-1 lg:grid-cols-2 gap-10'>
+						<div className='grid grid-cols-1 lg:grid-cols-2 gap-10 dark:bg-dashboard-color p-4'>
 							{/* class name  */}
 							<div className='space-y-1 text-sm'>
 								<label

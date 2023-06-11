@@ -29,7 +29,7 @@ const PopularClass = () => {
 	};
 
     return (
-		<div className=''>
+		<div className='dark:bg-dark-primary-colro'>
 			<Container>
 				<SectionTitle
 					title={"CHOOSE YOUR DANCE STYLE"}

@@ -85,6 +85,7 @@ const NavBar = () => {
 			data-aos='fade-up'
 			data-aos-duration='10000'
 			data-aos-easing='linear'
+			
 		>
 			<div className='bg-[#FFFFFF] dark:bg-dark-primary-colro shadow-lg dark:text-dark-secondary-colro'>
 				<Container>
@@ -109,8 +110,8 @@ const NavBar = () => {
 							/>
 						</div>
 						{isOpen && (
-							<div className=' absolute right-0 top-10 text-primary-color rounded-md w-1/2 overflow-hidden responisv-nav z-50'>
-								<ul className='flex flex-col bg-red-400 z-50 '>
+							<div className=' absolute right-0 top-10 text-primary-color dark:bg-dark-primary-colro rounded-md w-1/2 overflow-hidden responisv-nav z-50'>
+								<ul className='flex flex-col '>
 									{navItesm}
 								</ul>
 							</div>

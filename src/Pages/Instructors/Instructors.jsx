@@ -6,7 +6,7 @@ import useInstracture from "../../hooks/useInstracture";
 const Instructors = () => {
     const { instractors} = useInstracture();
     return (
-		<div>
+		<div className="dark:bg-dark-primary-colro">
 			<Container>
 				<div>
 					<SectionTitle

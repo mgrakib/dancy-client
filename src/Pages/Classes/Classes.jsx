@@ -9,6 +9,7 @@ import Swal from "sweetalert2";
 import useApprovedCasses from "../../hooks/useApprovedCasses";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 
 const Classes = () => {
     const { user, loading } = useAuth();
@@ -99,7 +100,10 @@ const Classes = () => {
 		);
     }
     return (
-		<div className='pt-4 md:pt-16'>
+		<div className='pt-4 md:pt-16 dark:bg-dark-primary-colro'>
+			<Helmet>
+				<title>Classes - Dancy</title>
+			</Helmet>
 			<Container>
 				<div className='flex items-center justify-between md:justify-start gap-3'>
 					<div>

@@ -19,7 +19,7 @@ import sliderImg6 from '../../assets/HeroImg/heroImg6.jpg'
 
 const HeroImgSlider = () => {
     return (
-		<div className='py-4 md:py-16'>
+		<div className='py-4 md:py-16 -z-10 dark:bg-dark-primary-colro'>
 			<Swiper
 				slidesPerView={"auto"}
 				spaceBetween={30}

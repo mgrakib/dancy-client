@@ -94,13 +94,15 @@ const SignUp = () => {
 				/>
 			</Helmet> */}
 
-			<div className='flex justify-center items-center min-h-screen'>
+			<Helmet><title>Sing up - Dancy</title></Helmet>
+
+			<div className='flex justify-center items-center min-h-screen dark:bg-dark-primary-colro'>
 				<div className='flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900'>
 					<div className='mb-8 text-center'>
 						<h1 className='my-3 text-4xl font-bold'>Sign Up</h1>
 						{/* TODO: Change name  */}
 						<p className='text-sm text-gray-400'>
-							Welcome to AirCNC
+							Welcome to Dacny
 						</p>
 					</div>
 					<form

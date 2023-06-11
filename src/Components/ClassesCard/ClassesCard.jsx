@@ -86,9 +86,9 @@ const ClassesCard = ({
 
 	return (
 		<div
-			className={`rounded-tl-lg rounded-tr-lg overflow-hidden  border border-secondary-color  card-container duration-500 ${
-				availableSeats === 0 && "bg-red-200"
-			}`}
+			className={`rounded-tl-lg rounded-tr-lg overflow-hidden  border border-secondary-color dark:border-dark-secondary-colro  card-container duration-500 ${
+				availableSeats === 0 && "bg-red-200 dark:bg-red-200"
+			} dark:bg-dark-common-color`}
 		>
 			<div className='h-[250px]  overflow-hidden'>
 				<img

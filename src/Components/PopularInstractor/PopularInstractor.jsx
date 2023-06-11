@@ -31,7 +31,7 @@ const PopularInstractor = () => {
 	};
 
 	return (
-		<div>
+		<div className='dark:bg-dark-primary-colro'>
 			<Container>
 				<SectionTitle
 					title={"Learn to swing your hips with them"}

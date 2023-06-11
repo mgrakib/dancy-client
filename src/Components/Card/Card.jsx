@@ -23,7 +23,7 @@ const Card = ({ singleClass }) => {
 	} = singleClass;
 	return (
 		<div
-			className={`group overflow-hidden rounded-md flex flex-col shadow-md class-container ${availableSeats === 0 && 'bg-red-200'}`}
+			className={`group overflow-hidden rounded-md flex flex-col shadow-md class-container ${availableSeats === 0 && 'bg-red-200 dark:bg-red-200'} dark:bg-dark-common-color`}
 		>
 			<div className='min-h-[250px]'>
 				<img
