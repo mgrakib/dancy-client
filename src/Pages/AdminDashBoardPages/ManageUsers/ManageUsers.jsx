@@ -4,20 +4,22 @@ import axios from "axios";
 import TableData from "../../../Components/Reusable/Table/TableData";
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 import useUser from "../../../hooks/useUser";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const ManageUsers = () => {
 	const { users, refetch } = useUser();
+	const [axiosSEcure] = useAxiosSecure();
 
 	const handelRoleChange = async (role, user) => {
 		const roleStatus = { role, email: user?.email };
-		const result = await axios
+		const result = await axiosSEcure
 			.put("http://localhost:5000/update-user-role", roleStatus)
 			.then(res => {
-				axios.post(`http://localhost:5000/make-instructor/${user?.email}`).then(result => {
+				axiosSEcure.post(`http://localhost:5000/make-instructor/${user?.email}`).then(result => {
 					console.log(result.data)
 					refetch();
 				})
-			});
+			}).catch(err => console.log(err.message))
 	};
 
 	

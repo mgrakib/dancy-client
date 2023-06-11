@@ -7,11 +7,13 @@ import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import PaymentModal from "../../../Components/Modal/PaymentModal";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const MySelectedClass = () => {
 	const { cartClasses, refetch } = useCartClass();
 	let [isOpen, setIsOpen] = useState(false);
 	const [targetClass, setTargetClass] = useState({});
+	const [axiosSEcure] = useAxiosSecure();
 
 	function closeModal() {
 		setIsOpen(false);
@@ -28,7 +30,8 @@ const MySelectedClass = () => {
 
 
     
-    const handelRemoveToCart = (singleClass) => {
+	const handelRemoveToCart = (singleClass) => {
+		
         const id = singleClass._id;
         Swal.fire({
 			title: "Are you sure to remove from cart?",
@@ -40,11 +43,11 @@ const MySelectedClass = () => {
 			confirmButtonText: "Yes, delete it!",
 		}).then(result => {
             if (result.isConfirmed) {
-                axios
+                axiosSEcure
 					.delete(`http://localhost:5000/delete-cart-class/${id}`)
 					.then(res => {
-                        refetch();
-                        Swal.fire(
+						refetch();
+						Swal.fire(
 							"Remove!",
 							"Your file has been Removed from cart.",
 							"success"

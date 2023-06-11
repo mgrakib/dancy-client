@@ -4,6 +4,8 @@ import useAuth from "../../../hooks/useAuth";
 import axios from "axios";
 import useCartClass from "../../../hooks/useCartClass";
 import { toast } from "react-hot-toast";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+
 
 const CheckoutForm = ({ price, targetClass, closeModal }) => {
 	const { user } = useAuth();
@@ -14,6 +16,7 @@ const CheckoutForm = ({ price, targetClass, closeModal }) => {
 	const [clientSecret, setClientSecret] = useState("");
 	const [transactionID, setTransactionID] = useState("");
 	const [processing, setProcessing] = useState(false);
+	const [axiosSEcure] = useAxiosSecure();
 
 	useEffect(() => {
 		if (price > 0) {
@@ -91,13 +94,15 @@ const CheckoutForm = ({ price, targetClass, closeModal }) => {
 				instructorEmail: targetClass.instructorEmail,
 			};
 
-			axios.post("http://localhost:5000/payments", payment).then(res => {
-				closeModal();
-				toast.success("Payment Successfully");
-				console.log(res.data)
-				refetch();
-				setProcessing(false);
-			});
+			axiosSEcure
+				.post("http://localhost:5000/payments", payment)
+				.then(res => {
+					closeModal();
+					toast.success("Payment Successfully");
+					console.log(res.data);
+					refetch();
+					setProcessing(false);
+				});
 		}
 	};
 	return (

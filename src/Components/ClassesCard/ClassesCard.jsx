@@ -16,6 +16,7 @@ import { AiOutlineUsergroupAdd } from "react-icons/ai";
 import useModal from "../../hooks/useModal";
 import DenyMessageShow from "../Modal/DenyMessageShow";
 import { toast } from "react-hot-toast";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const ClassesCard = ({
 	singleClass,
@@ -45,6 +46,7 @@ const ClassesCard = ({
 	const { user } = useAuth();
 	// check role for disable btn
 	const { role } = useRole();
+	const [axiosSEcure] = useAxiosSecure();
 	const {
 		isOpen: FBMisOpen,
 		closeModal: FBMcloseModal,
@@ -63,7 +65,7 @@ const ClassesCard = ({
 	// change status
 	const handelChangeStatus = async (statusValue, id, feedBack) => {
 		const status = { status: statusValue, id: id, feedBack };
-		const result = await axios
+		const result = await axiosSEcure
 			.put(`http://localhost:5000/update-class-status`, status)
 			.then(res => {
 				if (statusValue === "approved") {

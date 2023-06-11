@@ -35,7 +35,7 @@ const SignUp = () => {
 		formData.append("image", data.image[0]);
 		
 
-		// password did not mathc 
+		// password did not match 
 		if (data.password !== data.confirmPassword) {
 			return setError(`Password didn't match`)
 		}

@@ -1,19 +1,20 @@
 import axios from "axios";
 import { useQuery } from "react-query";
 import useAuth from "./useAuth";
+import useAxiosSecure from "./useAxiosSecure";
 
 const useInstructorClass = () => {
     const { user, loading } = useAuth();
     const email = { email: user?.email }
+    const [axiosSEcure] = useAxiosSecure();
     
     const {data:instructorCalsses =[], isLoading, refetch } = useQuery({
         queryKey: ['instructor-classes'],
         enabled: !loading,
         queryFn: async () => {
-            const result = await axios(
-				`http://localhost:5000/instructor-classes/?email=${user?.email}`, {headers: {Authorization: `Bearer ${localStorage.getItem('access-token')}`}}
+            const result = await axiosSEcure(
+				`instructor-classes/?email=${user?.email}`
 			);
-            
             return result.data;
         }
     })

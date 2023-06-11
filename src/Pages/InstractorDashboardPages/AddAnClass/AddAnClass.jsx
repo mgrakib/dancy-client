@@ -7,8 +7,10 @@ import useAuth from "../../../hooks/useAuth";
 import axios from "axios";
 import { TbFidgetSpinner } from "react-icons/tb";
 import { toast } from "react-hot-toast";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 const AddAnClass = () => {
 	const { user, loading, setLoading } = useAuth();
+	const [axiosSEcure] = useAxiosSecure();
 	const {
 		register,
 		handleSubmit,
@@ -50,13 +52,13 @@ const AddAnClass = () => {
 					totalStudent: 0,
 				};
 
-				axios
+				axiosSEcure
 					.post(`http://localhost:5000/add-an-class`, newClass)
 					.then(res => {
 						toast.success("Successfully add!");
 						setLoading(false);
-						
-					});
+					})
+					.catch(err => setLoading(false));
 			})
 			.catch(err => setLoading(false));
 	};
