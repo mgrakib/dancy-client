@@ -1,11 +1,11 @@
 import './DanceGallery.css'
 
 
-import danch1 from '../../assets/danch/danch1.jpg'
-import danch2 from '../../assets/danch/danch2.avif'
-import danch3 from '../../assets/danch/danch3.jpg'
-import danch4 from '../../assets/danch/danch4.jpg'
-import danch5 from '../../assets/danch/danch5.jpg'
+import danch1 from '../../assets/dance/danch1.jpg'
+import danch2 from '../../assets/dance/danch2.avif'
+import danch3 from '../../assets/dance/danch3.jpg'
+import danch4 from '../../assets/dance/danch4.jpg'
+import danch5 from '../../assets/dance/danch5.jpg'
 import AOS from "aos";
 import "aos/dist/aos.css"; // You can also use <link> for styles
 import SectionTitle from '../SectionTitle/SectionTitle';

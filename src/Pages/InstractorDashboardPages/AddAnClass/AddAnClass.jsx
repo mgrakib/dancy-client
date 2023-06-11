@@ -8,8 +8,10 @@ import axios from "axios";
 import { TbFidgetSpinner } from "react-icons/tb";
 import { toast } from "react-hot-toast";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { useState } from "react";
 const AddAnClass = () => {
-	const { user, loading, setLoading } = useAuth();
+	const { user } = useAuth();
+	const [process, setProcess] = useState(false);
 	const [axiosSEcure] = useAxiosSecure();
 	const {
 		register,
@@ -17,8 +19,10 @@ const AddAnClass = () => {
 		watch,
 		formState: { errors },
 	} = useForm();
+
+
 	const onSubmit = data => {
-		setLoading(true);
+		setProcess(true);
 		const classImage = data.image[0];
 		const formData = new FormData();
 		formData.append("image", classImage);
@@ -53,14 +57,14 @@ const AddAnClass = () => {
 				};
 
 				axiosSEcure
-					.post(`http://localhost:5000/add-an-class`, newClass)
+					.post(`add-an-class`, newClass)
 					.then(res => {
 						toast.success("Successfully add!");
-						setLoading(false);
+						setProcess(false);
 					})
-					.catch(err => setLoading(false));
+					.catch(err => setProcess(false));
 			})
-			.catch(err => setLoading(false));
+			.catch(err => setProcess(false));
 	};
 	return (
 		<div>
@@ -189,7 +193,7 @@ const AddAnClass = () => {
 							type='submit'
 							className='w-full p-3 mt-5 text-center font-medium text-white transition duration-200 rounded shadow-md bg-secondary-color'
 						>
-							{loading ? (
+							{process ? (
 								<TbFidgetSpinner
 									className='m-auto animate-spin'
 									size={24}

@@ -98,6 +98,7 @@ const Dashboard = () => {
     }
 
 
+	console.log(isLoading , role , ' role' );
 	if (loading) {
 		return <p>Loading</p>
 	}

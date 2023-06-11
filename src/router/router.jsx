@@ -86,7 +86,11 @@ const router = createBrowserRouter([
 			// instracture dashboard router
 			{
 				path: "/dashboard/add-an-class",
-				element: <AddAnClass />,
+				element: (
+					<InstructorRouter>
+						<AddAnClass />
+					</InstructorRouter>
+				),
 			},
 			{
 				path: "/dashboard/my-classes",
