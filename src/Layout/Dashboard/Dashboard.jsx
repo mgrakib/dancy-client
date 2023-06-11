@@ -12,10 +12,12 @@ import { useQuery } from "react-query";
 import { useEffect } from "react";
 import { MdPayment } from "react-icons/md";
 import useCartClass from "../../hooks/useCartClass";
+import useAuth from "../../hooks/useAuth";
 
 const Dashboard = () => {
     
 	const { role, isLoading, refetch } = useRole();
+	const { loading } = useAuth();
 	const {cartClasses } = useCartClass();
 	
 	// set dashboard nav link by role 
@@ -94,6 +96,11 @@ const Dashboard = () => {
 			</>
 		);
     }
+
+
+	if (loading) {
+		return <p>Loading</p>
+	}
 		return (
 			<div className='flex'>
 				<div className='w-[25%] bg-dashboard-color h-[100vh]'>
@@ -107,7 +114,8 @@ const Dashboard = () => {
 						</Link>
 					</div>
 
-					<ul >{sideNavItem}</ul>
+					{/* TODO: LOADiNG  */}
+					{isLoading ? <><p>Data Load</p></> : <ul>{sideNavItem}</ul>}
 				</div>
 
 				<div className='w-full h-[100vh] overflow-y-auto '>

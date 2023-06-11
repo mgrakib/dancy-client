@@ -11,7 +11,7 @@ const Home = () => {
 	const location = useLocation();
     return (
 		<div>
-			{/* <HeroImgSlider /> */}
+			<HeroImgSlider />
 			<HeroImage />
 			<PopularClass />
 			<PopularInstractor />

@@ -19,6 +19,8 @@ import PaymentHistory from "../Pages/StudentDashBoardPages/PaymentHistory/Paymen
 import Classes from "../Pages/Classes/Classes";
 import Instructors from "../Pages/Instructors/Instructors";
 import InstractorClasses from "../Pages/InstractorClasses/InstractorClasses";
+import AdminRouter from "./AdminRouter";
+import InstructorRouter from "./InstructorRouter";
 
 const router = createBrowserRouter([
 	{
@@ -41,7 +43,10 @@ const router = createBrowserRouter([
 			{
 				path: "/instractors-classes/:email",
 				element: <InstractorClasses />,
-				loader: ({params}) => fetch(`http://localhost:5000/get-instructor-classes/${params.email}`),
+				loader: ({ params }) =>
+					fetch(
+						`http://localhost:5000/get-instructor-classes/${params.email}`
+					),
 			},
 			{
 				path: "/login",
@@ -64,11 +69,19 @@ const router = createBrowserRouter([
 			},
 			{
 				path: "/dashboard/manage-users",
-				element: <ManageUsers />,
+				element: (
+					<AdminRouter>
+						<ManageUsers />
+					</AdminRouter>
+				),
 			},
 			{
 				path: "/dashboard/manage-classes",
-				element: <ManageClasses />,
+				element: (
+					<AdminRouter>
+						<ManageClasses />
+					</AdminRouter>
+				),
 			},
 			// instracture dashboard router
 			{
@@ -77,7 +90,11 @@ const router = createBrowserRouter([
 			},
 			{
 				path: "/dashboard/my-classes",
-				element: <MyClasses />,
+				element: (
+					<InstructorRouter>
+						<MyClasses />
+					</InstructorRouter>
+				),
 			},
 			// student dashboard router
 			{
@@ -88,7 +105,7 @@ const router = createBrowserRouter([
 				path: "/dashboard/my-enrolled-classes",
 				element: <MyEnrolledClass />,
 			},
-			
+
 			{
 				path: "/dashboard/payment-history",
 				element: <PaymentHistory />,
