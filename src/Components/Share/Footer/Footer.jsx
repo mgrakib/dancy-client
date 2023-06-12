@@ -1,19 +1,19 @@
 import { Link } from "react-router-dom";
 import Container from "../../Container/Container";
-import logo_light from '../../../assets/logo.png'
-import logo_dark from '../../../assets/logo_Dark.png'
-import useLogo from "../../../hooks/useLogo";
+import logo_light from "../../../assets/logo.png";
+import logo_dark from "../../../assets/logo_Dark.png";
+import useAuth from "../../../hooks/useAuth";
 
 
 const Footer = () => {
-	const { isDarkLogo, setIsDarkLogo } = useLogo();
+	const {isDark} = useAuth()
     return (
 		<div className='dark:bg-dark-primary-colro'>
 			<Container>
 				<div className='w-[160px] pt-4 md:pt-16 mx-auto text-center'>
 					<Link to={"/"}>
 						<img
-							src={isDarkLogo ? logo_dark : logo_light}
+							src={isDark ? logo_light : logo_dark}
 							alt=''
 						/>
 						<p className='dark:text-dark-common-color'>

@@ -6,17 +6,37 @@ import Container from '../../Container/Container';
 import './NavBar.css'
 import useAuth from '../../../hooks/useAuth';
 import { GiHamburgerMenu } from "react-icons/gi";
-import { useState } from 'react';
+
 import AOS from "aos";
 import "aos/dist/aos.css"; // You can also use <link> for styles
-import useLogo from '../../../hooks/useLogo';
+
+import useTheme from '../../../hooks/useTheme';
+import { useState } from 'react';
+
 // ..
 AOS.init();
 
 const NavBar = () => {
-	const { user, logOut } = useAuth();
+	const { user, logOut, isDark, setIsDark } = useAuth();
 	const [isOpen, setIsOpen] = useState(false);
-	const {isDarkLogo, setIsDarkLogo} = useLogo();
+	const [theme, setThem] = useTheme();
+
+	const handelDarkLight = () => {
+		const isThemeDark = localStorage.getItem('theme');
+		if (isThemeDark === 'dark') {
+			localStorage.setItem('theme', 'light')
+			setThem('light')
+			setIsDark(false);
+			
+		} else {
+			localStorage.setItem('theme', 'dark')
+			setThem("dark");
+			setIsDark(true);
+			
+		}
+		
+	}
+
 
 	const handelLogOut = () => {
 		logOut()
@@ -85,7 +105,6 @@ const NavBar = () => {
 			data-aos='fade-up'
 			data-aos-duration='10000'
 			data-aos-easing='linear'
-			
 		>
 			<div className='bg-[#FFFFFF] dark:bg-dark-primary-colro shadow-lg dark:text-dark-secondary-colro'>
 				<Container>
@@ -93,14 +112,22 @@ const NavBar = () => {
 						<Link to={"/"}>
 							<div className='w-[70px]'>
 								<img
-									src={ isDarkLogo ? logo_dark : logo_Light }
+									src={isDark ? logo_Light : logo_dark}
 									alt=''
 								/>
 							</div>
 						</Link>
 
-						<div className='hidden md:block'>
+						<div className='hidden md:block ms-auto'>
 							<ul className='flex items-center'>{navItesm}</ul>
+						</div>
+						<div>
+							<button
+								onClick={handelDarkLight}
+								className={`bg-dark-primary-colro text-primary-color dark:bg-white dark:text-dark-primary-colro font-bold py-1 px-3 rounded-md duration-300`}
+							>
+								{isDark ? 'Light' : 'Dark'}
+							</button>
 						</div>
 
 						<div className='md:hidden'>
@@ -111,9 +138,7 @@ const NavBar = () => {
 						</div>
 						{isOpen && (
 							<div className=' absolute right-0 top-10 text-primary-color dark:bg-dark-primary-colro rounded-md w-1/2 overflow-hidden responisv-nav z-50'>
-								<ul className='flex flex-col '>
-									{navItesm}
-								</ul>
+								<ul className='flex flex-col '>{navItesm}</ul>
 							</div>
 						)}
 					</div>
