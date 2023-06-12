@@ -97,6 +97,15 @@ const NavBar = () => {
 					<li>Login</li>
 				</Link>
 			)}
+
+			<div className=''>
+				<button
+					onClick={handelDarkLight}
+					className={`bg-dark-primary-colro text-primary-color dark:bg-white dark:text-dark-primary-colro font-bold py-1 px-3 rounded-md duration-300`}
+				>
+					{isDark ? "Light" : "Dark"}
+				</button>
+			</div>
 		</>
 	);
 
@@ -121,14 +130,7 @@ const NavBar = () => {
 						<div className='hidden md:block ms-auto'>
 							<ul className='flex items-center'>{navItesm}</ul>
 						</div>
-						<div>
-							<button
-								onClick={handelDarkLight}
-								className={`bg-dark-primary-colro text-primary-color dark:bg-white dark:text-dark-primary-colro font-bold py-1 px-3 rounded-md duration-300`}
-							>
-								{isDark ? 'Light' : 'Dark'}
-							</button>
-						</div>
+						
 
 						<div className='md:hidden'>
 							<GiHamburgerMenu

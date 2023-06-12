@@ -21,11 +21,14 @@ const CheckoutForm = ({ price, targetClass, closeModal }) => {
 	useEffect(() => {
 		if (price > 0) {
 			// Create PaymentIntent as soon as the page loads
-			fetch("http://localhost:5000/create-payment-intent", {
-				method: "POST",
-				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify({ price }),
-			})
+			fetch(
+				"https://twelve-assignment-server-mgrakib.vercel.app/create-payment-intent",
+				{
+					method: "POST",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify({ price }),
+				}
+			)
 				.then(res => res.json())
 				.then(data => setClientSecret(data.clientSecret));
 		}
@@ -95,7 +98,7 @@ const CheckoutForm = ({ price, targetClass, closeModal }) => {
 			};
 
 			axiosSEcure
-				.post("http://localhost:5000/payments", payment)
+				.post("payments", payment)
 				.then(res => {
 					closeModal();
 					toast.success("Payment Successfully");

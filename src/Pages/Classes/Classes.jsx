@@ -11,17 +11,21 @@ import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { Helmet } from "react-helmet-async";
 import LoadingSkeleton from "../../Components/LoadingModal/LoadingSkeleton";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const Classes = () => {
     const { user, loading } = useAuth();
     const location = useLocation();
     const navigate = useNavigate();
 
+	
 
 	// TODO : change value second time 
 	const [dataLimite, setDataLimite] = useState(6);
 	const [sortData, setSortData] = useState(-1);
 	let { approvedClasses, refetch, isLoading } = useApprovedCasses();
+	const [axiosSEcure] = useAxiosSecure();
+
 	const [addToCartLoadin, setAddToCartLoadin] = useState(false);
 	
 	const handelSortDataChange = e => {
@@ -76,13 +80,12 @@ const Classes = () => {
 				img,
 			};
             
-            axios
-				.post(`http://localhost:5000/class-add-to-cart`, classToCart)
+            axiosSEcure
+				.post(`class-add-to-cart`, classToCart)
 				.then(res => {
-					if (res.data.message === 'already added') {
-						
+					if (res.data.message === "already added") {
 						toast.error("This class already added its not tost.");
-                    }else{
+					} else {
 						toast.success("Add successfully!!!");
 					}
 					setAddToCartLoadin(false);

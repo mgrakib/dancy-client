@@ -66,11 +66,11 @@ const ClassesCard = ({
 	const handelChangeStatus = async (statusValue, id, feedBack) => {
 		const status = { status: statusValue, id: id, feedBack };
 		const result = await axiosSEcure
-			.put(`http://localhost:5000/update-class-status`, status)
+			.put(`update-class-status`, status)
 			.then(res => {
 				if (statusValue === "approved") {
-					axios
-						.put(`http://localhost:5000/update-instructor-info`, {
+					axiosSEcure
+						.put(`update-instructor-info`, {
 							name,
 							email: instructorEmail,
 						})

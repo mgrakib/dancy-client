@@ -61,31 +61,19 @@ const AuthProvider = ({ children }) => {
 			setUser(currentUser);
 			setLoading(false);
 			if (currentUser) {
-				const loogedUser = {email: currentUser?.email}
-				axios.post("http://localhost:5000/jwt", loogedUser).then(result => {
-					localStorage.setItem('access-token', result.data.token)
-				})
+				const loogedUser = { email: currentUser?.email };
+				axios
+					.post(
+						"https://twelve-assignment-server-mgrakib.vercel.app/jwt",
+						loogedUser
+					)
+					.then(result => {
+						localStorage.setItem("access-token", result.data.token);
+					});
 			} else {
 				localStorage.removeItem('access-token')
 			}
-			
-			
-			// if (currentUser) {
-			// 	const loogedUser = { email: currentUser.email };
-			// setLoading(false);
-			// 	axios
-			// 		.post(`http://localhost:5000/jwt`, loogedUser)
-			// 		.then(
-			// 			res =>
-			// 				localStorage.setItem(
-			// 					"access-token",
-			// 					res.data.token
-			// 				),
-
-			// 		);
-			// } else {
-			// 	localStorage.removeItem("access-token");
-			// }
+		
 		});
 
 		return () => unsubscribe();

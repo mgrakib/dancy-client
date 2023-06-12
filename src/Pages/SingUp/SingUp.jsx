@@ -11,6 +11,7 @@ import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
 import { TbFidgetSpinner } from "react-icons/tb";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const SignUp = () => {
 	
@@ -21,6 +22,7 @@ const SignUp = () => {
 
 	const { createUser, updateUserNamePhoto, user, loading, setLoading } =
 		useAuth();
+	const [axiosSEcure] = useAxiosSecure();
 	const [error, setError] = useState('');
 	const {
 		register,
@@ -55,11 +57,12 @@ const SignUp = () => {
 						.then(() => {
 							updateUserNamePhoto(data.name, imgURL)
 								.then(async () => {
-									await axios
-										.post(
-											`http://localhost:5000/users`,
-											{email: data.email, userImg: imgURL, name: data.name}
-										)
+									await axiosSEcure
+										.post(`users`, {
+											email: data.email,
+											userImg: imgURL,
+											name: data.name,
+										})
 										.then(res => {
 											// TODO: navigate home
 											Swal.fire({

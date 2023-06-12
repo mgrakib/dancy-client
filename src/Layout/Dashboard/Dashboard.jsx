@@ -16,6 +16,7 @@ import useAuth from "../../hooks/useAuth";
 
 import logo_dark from "../../assets/logo_Dark.png";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { Helmet } from "react-helmet-async";
 
 const Dashboard = () => {
     
@@ -110,67 +111,77 @@ const Dashboard = () => {
 	if (loading) {
 		return <p>Loading</p>
 	}
-		return (
+	
+	return (
+		<div
+			className='flex'
+			onClick={() => {
+				console.log("first");
+				setIsDrowerOpen(false);
+			}}
+		>
+			<Helmet>
+				{role === "admin" ? (
+					<title>Admin Dashboard - Dancy</title>
+				) : role === "instractor" ? (
+					<title>Instructor Dashboard - Dancy</title>
+				) : (
+					<title>Student Dashboard - Dancy</title>
+				)}
+			</Helmet>
 			<div
-				className='flex'
-				onClick={() => {
-					console.log('first')
-					setIsDrowerOpen(false)
-				}}
+				className={`w-[50%] md:w-[25%] bg-dashboard-color  h-[100vh] absolute ${
+					isDrowerOpen ? "left-0" : "-left-60"
+				} md:left-0 z-50  md:relative duration-300`}
 			>
-				<div
-					className={`w-[50%] md:w-[25%] bg-dashboard-color  h-[100vh] absolute ${
-						isDrowerOpen ? "left-0" : "-left-60"
-					} md:left-0 z-50  md:relative duration-300`}
-				>
-					<div className=' p-4  border-b border-dashed border-secondary-color mb-4 flex relative'>
-						<Link to={"/"}>
-							<img
-								src={logo_light}
-								alt=''
-								className='w-[120px]'
-							/>
-						</Link>
+				<div className=' p-4  border-b border-dashed border-secondary-color mb-4 flex relative'>
+					<Link to={"/"}>
+						<img
+							src={logo_light}
+							alt=''
+							className='w-[120px]'
+						/>
+					</Link>
 
-						<div
-							onClick={() => setIsDrowerOpen(!isDrowerOpen)}
-							className='md:hidden w-[20px] h-[20px] bg-red-500 flex justify-center items-center rounded-full text-white absolute -right-2 top-1/2 -translate-y-1/2 drop-shadow-[5_5px_35px_rgba(239,68,69,1)]'
-						>
-							<IoCloseSharp />
-						</div>
+					<div
+						onClick={() => setIsDrowerOpen(!isDrowerOpen)}
+						className='md:hidden w-[20px] h-[20px] bg-red-500 flex justify-center items-center rounded-full text-white absolute -right-2 top-1/2 -translate-y-1/2 drop-shadow-[5_5px_35px_rgba(239,68,69,1)]'
+					>
+						<IoCloseSharp />
 					</div>
-
-					{/* TODO: LOADiNG  */}
-					{isLoading ? (
-						<>
-							<p>Data Load</p>
-						</>
-					) : (
-						<ul>{sideNavItem}</ul>
-					)}
 				</div>
 
-				<div className='w-full h-[100vh] overflow-y-auto bg-[#F5F8FA] dark:bg-dark-dashboard-color'>
-					<div className='flex items-center justify-between py-3 px-2 md:hidden'>
-						<div className='w-[100px]'>
-							<img
-								src={logo_light}
-								alt=''
-							/>
-						</div>
-
-						<div className="z-50">
-							<GiHamburgerMenu
-								onClick={handelDrowerOpen}
-								className='text-white'
-								size={"24"}
-							/>
-						</div>
-					</div>
-					<Outlet />
-				</div>
+				{/* TODO: LOADiNG  */}
+				{isLoading ? (
+					<>
+						<p>Data Load</p>
+					</>
+				) : (
+					<ul>{sideNavItem}</ul>
+				)}
 			</div>
-		);
+
+			<div className='w-full h-[100vh] overflow-y-auto bg-[#F5F8FA] dark:bg-dark-dashboard-color'>
+				<div className='flex items-center justify-between py-3 px-2 md:hidden'>
+					<div className='w-[100px]'>
+						<img
+							src={logo_light}
+							alt=''
+						/>
+					</div>
+
+					<div className='z-50'>
+						<GiHamburgerMenu
+							onClick={handelDrowerOpen}
+							className='text-white'
+							size={"24"}
+						/>
+					</div>
+				</div>
+				<Outlet />
+			</div>
+		</div>
+	);
 };
 
 export default Dashboard;

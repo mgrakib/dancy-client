@@ -44,7 +44,7 @@ const MySelectedClass = () => {
 		}).then(result => {
             if (result.isConfirmed) {
                 axiosSEcure
-					.delete(`http://localhost:5000/delete-cart-class/${id}`)
+					.delete(`delete-cart-class/${id}`)
 					.then(res => {
 						refetch();
 						Swal.fire(

@@ -5,10 +5,12 @@ import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 const SocialLogin = () => {
 	const { googleLogin, setLoading } = useAuth();
 	const navigate = useNavigate();
 	const location = useLocation();
+	const [axiosSEcure] = useAxiosSecure();
 
 	const from = location.state?.from?.pathname || "/";
 
@@ -16,12 +18,11 @@ const SocialLogin = () => {
 		googleLogin()
 			.then(async res => {
 
-				console.log(res)
-				await axios
-					.post(`http://localhost:5000/users`, {
+				await axiosSEcure
+					.post(`users`, {
 						email: res?.user?.email,
 						userImg: res?.user?.photoURL,
-						name: res?.user?.displayName
+						name: res?.user?.displayName,
 					})
 					.then(res => {
 						// TODO: navigate home

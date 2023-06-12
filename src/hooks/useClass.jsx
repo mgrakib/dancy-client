@@ -14,7 +14,7 @@ const useClass = () => {
 		queryKey: ["classes"],
 		enabled: !loading,
 		queryFn: async () => {
-			const result = await axiosSEcure("http://localhost:5000/classes");
+			const result = await axiosSEcure("classes");
 			return result.data;
 		},
     });

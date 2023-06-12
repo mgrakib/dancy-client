@@ -1,7 +1,9 @@
 import axios from "axios";
 import { useQuery } from "react-query";
+import useAxiosSecure from "./useAxiosSecure";
 
 const useInstracture = (numerOfData, sort) => {
+	const [axiosSEcure] = useAxiosSecure();
 	const {
 		data: instractors = [],
 		refetch,
@@ -9,8 +11,8 @@ const useInstracture = (numerOfData, sort) => {
 	} = useQuery({
 		queryKey: ["instracture"],
 		queryFn: async () => {
-			const result = await axios(
-				`http://localhost:5000/instructor/?numberOfData=${numerOfData}&sort=${sort}`
+			const result = await axiosSEcure(
+				`instructor/?numberOfData=${numerOfData}&sort=${sort}`
 			);
 			return result.data;
 		},

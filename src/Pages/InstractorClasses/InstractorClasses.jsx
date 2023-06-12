@@ -8,12 +8,15 @@ import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 import { toast } from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const InstractorClasses = () => {
 	const classes = useLoaderData();
 	const { user } = useAuth();
 	const location = useLocation();
 	const navigation = useNavigate();
+	const [axiosSEcure] = useAxiosSecure();
 
 	const handerAddClass = singleClass => {
 		if (!user) {
@@ -52,8 +55,8 @@ const InstractorClasses = () => {
 				img,
 			};
 
-			axios
-				.post(`http://localhost:5000/class-add-to-cart`, classToCart)
+			axiosSEcure
+				.post(`class-add-to-cart`, classToCart)
 				.then(res => {
 					if (res.data.message === "already added") {
 						toast.error("This class already added its not tost.");
@@ -66,6 +69,11 @@ const InstractorClasses = () => {
 
 	return (
 		<div className="dark:bg-dark-primary-colro">
+			<Helmet>
+				<title>Instructors Classes - Dancy</title>
+			</Helmet>
+
+
 			<Container>
 				<SectionTitle
 					title={"Instractor Classes"}

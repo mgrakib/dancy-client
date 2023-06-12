@@ -1,8 +1,10 @@
 import axios from "axios";
 import { useQuery } from "react-query";
+import useAxiosSecure from "./useAxiosSecure";
 
 const useApprovedCasses = (numerOfData, sort) => {
 
+	const [axiosSEcure] = useAxiosSecure();
 
 	// TODO: first fetch all data
 	const {
@@ -12,8 +14,8 @@ const useApprovedCasses = (numerOfData, sort) => {
 	} = useQuery({
 		queryKey: ["classes"],
 		queryFn: async () => {
-			const result = await axios(
-				`http://localhost:5000/approverd-classes/?numberOfData=${numerOfData}&sort=${sort}`
+			const result = await axiosSEcure(
+				`approverd-classes/?numberOfData=${numerOfData}&sort=${sort}`
 			);
 
 			return result.data;

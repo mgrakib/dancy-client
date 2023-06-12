@@ -13,9 +13,9 @@ const ManageUsers = () => {
 	const handelRoleChange = async (role, user) => {
 		const roleStatus = { role, email: user?.email };
 		const result = await axiosSEcure
-			.put("http://localhost:5000/update-user-role", roleStatus)
+			.put("update-user-role", roleStatus)
 			.then(res => {
-				axiosSEcure.post(`http://localhost:5000/make-instructor/${user?.email}`).then(result => {
+				axiosSEcure.post(`make-instructor/${user?.email}`).then(result => {
 					console.log(result.data)
 					refetch();
 				})
