@@ -5,9 +5,10 @@ import TableData from "../../../Components/Reusable/Table/TableData";
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 import useUser from "../../../hooks/useUser";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import TableDataLoading from "../../../Components/LoadingModal/TableDataLoading";
 
 const ManageUsers = () => {
-	const { users, refetch } = useUser();
+	const { users, refetch, isLoading } = useUser();
 	const [axiosSEcure] = useAxiosSecure();
 
 	const handelRoleChange = async (role, user) => {
@@ -24,24 +25,11 @@ const ManageUsers = () => {
 
 	
 
-// _id
-// 648054557135cb7910807a47
-// name
-// "John Smith"
-// email
-// "john.smith@example.com"
-
-// courses
-// Array
-// 0
-// "Mathematics"
-// 1
-// "Physics"
-// experience
-// 5
 
 	// TODO: reomove instructor when is admin
-
+	if (isLoading) {
+		return <TableDataLoading cards={6} />;
+	}
 	return (
 		<div className=''>
 			<SectionTitle

@@ -1,6 +1,7 @@
 import { Navigate, useLocation } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import useRole from "../hooks/useRole";
+import DashboardPageLoading from "../Components/LoadingModal/DashboardPageLoading";
 
 const AdminRouter = ({ children }) => {
     const { user, loading } = useAuth();
@@ -9,7 +10,7 @@ const AdminRouter = ({ children }) => {
     
     
     if (loading || isLoading) {
-        return <p>Loading</p>
+        return <DashboardPageLoading />
     }
     if (user && role === 'admin') {
         return children;

@@ -1,5 +1,6 @@
 import ClassesCard from "../../../Components/ClassesCard/ClassesCard";
 import DashboardContainer from "../../../Components/DashboardContainer/DashboardContainer";
+import LoadingSkeleton from "../../../Components/LoadingModal/LoadingSkeleton";
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 import useClass from "../../../hooks/useClass";
 
@@ -9,7 +10,7 @@ const ManageClasses = () => {
 	// TODO: disable btn after click approve or deny
     
     if (isLoading) {
-        return <p>Loading...</p>
+        return <LoadingSkeleton cards={6}/>
     }
     return (
 		<div>

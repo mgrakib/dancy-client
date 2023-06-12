@@ -1,5 +1,6 @@
 import ClassesCard from "../../../Components/ClassesCard/ClassesCard";
 import DashboardContainer from "../../../Components/DashboardContainer/DashboardContainer";
+import LoadingSkeleton from "../../../Components/LoadingModal/LoadingSkeleton";
 import PageLoader from "../../../Components/PageLoader/PageLoader";
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 import useAuth from "../../../hooks/useAuth";
@@ -12,7 +13,7 @@ const MyClasses = () => {
     const { instructorCalsses, isLoading } = useInstructorClass();
     
     if (loading || isLoading) {
-		return <PageLoader />;
+		return <LoadingSkeleton cards={6}/>;
 	}
    
 

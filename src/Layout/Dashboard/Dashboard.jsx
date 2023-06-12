@@ -17,11 +17,14 @@ import useAuth from "../../hooks/useAuth";
 import logo_dark from "../../assets/logo_Dark.png";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Helmet } from "react-helmet-async";
+import DashboardLoading from "../../Components/LoadingModal/DashboardLoading";
+import DashboardItemsLoading from "../../Components/LoadingModal/DashboardItemsLoading";
 
 const Dashboard = () => {
     
 	const { role, isLoading, refetch } = useRole();
 	const { loading } = useAuth();
+	
 	const { cartClasses } = useCartClass();
 	const [isDrowerOpen, setIsDrowerOpen] = useState(false);
 	
@@ -109,7 +112,7 @@ const Dashboard = () => {
 	};
 
 	if (loading) {
-		return <p>Loading</p>
+		return <DashboardLoading />;
 	}
 	
 	return (
@@ -154,7 +157,7 @@ const Dashboard = () => {
 				{/* TODO: LOADiNG  */}
 				{isLoading ? (
 					<>
-						<p>Data Load</p>
+						<DashboardItemsLoading  card={4}/>
 					</>
 				) : (
 					<ul>{sideNavItem}</ul>

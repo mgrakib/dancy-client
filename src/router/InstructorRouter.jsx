@@ -1,6 +1,7 @@
 import { Navigate, useLocation } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import useRole from "../hooks/useRole";
+import DashboardPageLoading from "../Components/LoadingModal/DashboardPageLoading";
 
 const InstructorRouter = ({ children }) => {
     const { user, loading } = useAuth();
@@ -8,7 +9,7 @@ const InstructorRouter = ({ children }) => {
     const location = useLocation();
     
     if(loading || isLoading){
-        return <p>Loadin</p>
+        return <DashboardPageLoading />
     }
 
     if (user && role === 'instractor') {
