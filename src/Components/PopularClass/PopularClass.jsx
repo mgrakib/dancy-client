@@ -34,7 +34,7 @@ const PopularClass = () => {
 	};
 
     return (
-		<div className='dark:bg-dark-primary-colro'>
+		<div className='dark:bg-dark-primary-colro overflow-hidden'>
 			<Container>
 				<SectionTitle
 					title={"CHOOSE YOUR DANCE STYLE"}

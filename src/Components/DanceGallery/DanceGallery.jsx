@@ -13,7 +13,7 @@ import SectionTitle from '../SectionTitle/SectionTitle';
 AOS.init();
 const DanceGallery = () => {
 	return (
-		<div className='dark:bg-dark-primary-colro'>
+		<div className='dark:bg-dark-primary-colro  overflow-hidden px-2'>
 			<SectionTitle
 				isCenter={true}
 				title={"Show Your Talent"}

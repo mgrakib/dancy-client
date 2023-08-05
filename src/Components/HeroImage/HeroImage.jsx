@@ -11,7 +11,7 @@ AOS.init();
 
 const HeroImage = () => {
 	return (
-		<div className='heroImg-container h-[150vh] md:h-[100vh]'>
+		<div className='heroImg-container h-[150vh] md:h-[100vh] overflow-hidden'>
 			<Container>
 				<div className='flex flex-col justify-end h-full  '>
 					<div>
