@@ -9,6 +9,7 @@ import { useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import BecomeMember from "../../Components/BecomeMember/BecomeMember";
 import ClientSay from "../../Components/ClientSay/ClientSay";
+import OurExperiance from "../../Components/OurExperiance/OurExperiance";
 
 const Home = () => {
 	const location = useLocation();
@@ -23,6 +24,7 @@ const Home = () => {
 			<PopularClass />
 			<PopularInstractor />
 			<DanceGallery />
+			<OurExperiance />
 			<BecomeMember />
 			<ClientSay />
 		</div>

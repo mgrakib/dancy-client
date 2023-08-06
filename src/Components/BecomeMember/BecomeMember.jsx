@@ -3,7 +3,7 @@ import SectionTitle from "../SectionTitle/SectionTitle";
 
 const BecomeMember = () => {
     return (
-		<div className='dark:bg-dark-primary-colro overflow-hidden'>
+		<div className='dark:bg-dark-primary-colro  overflow-hidden'>
 			<SectionTitle
 				isCenter={true}
 				title={"BECOME MEMBER OF FLAIRE"}
